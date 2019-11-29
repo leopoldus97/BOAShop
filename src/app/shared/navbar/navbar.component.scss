@@ -1,11 +1,11 @@
 .divContainer{
-  width: 80%;
+  width: 95%;
   margin: auto;
   background-color: white;
   border: none;
 }
 .logo{
-  width: 27%;
+  width: 30%;
   height: auto;
 }
 
@@ -24,4 +24,20 @@
 }
 #profileIcon{
   padding-left: 20px;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.navbar.navbar-expand {
+  background-color: #99ccff;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.navbar.navbar-expand .navbar-collapse {
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

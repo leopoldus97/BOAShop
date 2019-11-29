@@ -10,6 +10,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import {HttpClientModule} from '@angular/common/http';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     WelcomePageComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
