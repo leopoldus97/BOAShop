@@ -1,0 +1,109 @@
+<div *ngIf="product">
+  <div>
+    <div>
+      <img src="{{product.pictureUrl}}">
+    </div>
+    <div>
+      <h1>{{product.name}}</h1>
+      <div>
+        <span>{{product.price}}</span>
+      </div>
+      <form>
+        <div>
+          <label>Size</label>
+        </div>
+        <fieldset>
+          <input type="radio" checked="checked" value="XS">
+          <label>XS</label>
+          <input type="radio" value="S">
+          <label>S</label>
+          <input type="radio" value="M">
+          <label>M</label>
+          <input type="radio"value="L">
+          <label>L</label>
+          <input type="radio" value="XL">
+          <label>XL</label>
+          <input type="radio" value="2XL">
+          <label>2XL</label>
+        </fieldset>
+        <div>
+          <label>Quantity: </label>
+          <input type="number">
+        </div>
+        <div>
+          <button>Add to cart</button>
+        </div>
+        <div>
+          <button>Buy it now</button>
+        </div>
+      </form>
+      <div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/securecheckout_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/100percentqualityguarantee_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/returnsaccepted_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/visa_1_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/mastercard_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/americanexpress_1_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/interac_1_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/applepay_color_card.svg">
+        </div>
+        <div>
+          <img src="https://trust.conversionbear.com/../static/badges/paypal_1_color_card.svg">
+        </div>
+      </div>
+      <div>
+        {{product.description}}
+        <p>Size options</p>
+      </div>
+      <div>
+        <table cellpadding="5">
+          <tbody>
+          <tr>
+            <td>&nbsp;</td>
+            <td><strong>XS</strong></td>
+            <td><strong>S</strong></td>
+            <td><strong>M</strong></td>
+            <td><strong>L</strong></td>
+            <td><strong>XL</strong></td>
+            <td><strong>2XL</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Width (inches)</strong></td>
+            <td>15 ½</td>
+            <td>17 ½</td>
+            <td>19 ½</td>
+            <td>21 ½</td>
+            <td>23 ½</td>
+            <td>25 ½</td>
+          </tr>
+          <tr>
+            <td><strong>Length (inches)</strong></td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!product">Loading...</div>

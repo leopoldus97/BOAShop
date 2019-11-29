@@ -1,0 +1,43 @@
+.divContainer{
+  width: 95%;
+  margin: auto;
+  background-color: white;
+  border: none;
+}
+.logo{
+  width: 30%;
+  height: auto;
+}
+
+
+.nav-link{
+  color: black;
+  font-weight: bold;
+  font-family: Calibri;
+  font-size: large;
+}
+.icon{
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#profileIcon{
+  padding-left: 20px;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.navbar.navbar-expand {
+  background-color: #99ccff;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.navbar.navbar-expand .navbar-collapse {
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

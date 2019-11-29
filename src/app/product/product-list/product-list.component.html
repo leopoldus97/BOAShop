@@ -1,0 +1,20 @@
+
+<div *ngIf="products">
+  <h1>{{name}}</h1>
+  <div>
+    <ul>
+      <li *ngFor="let product of products">
+        <a routerLink="/products/{{product.id}}">
+          <div>
+            <img src="{{product.pictureUrl}}">
+          </div>
+          <div>"{{product.collection.name}}" {{product.name}} - {{product.price | currency}}</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="!products">
+  <h1>Loading...</h1>
+</div>
+
