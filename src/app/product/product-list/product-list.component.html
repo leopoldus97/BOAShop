@@ -5,9 +5,6 @@
     <ul>
       <li *ngFor="let product of products">
         <a routerLink="/products/{{product.id}}">
-          <div>
-            <img src="{{product.pictureUrl}}">
-          </div>
           <div>"{{product.collection.name}}" {{product.name}} - {{product.price | currency}}</div>
         </a>
       </li>

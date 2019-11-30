@@ -1,7 +1,11 @@
 <div *ngIf="product">
   <div>
     <div>
-      <img src="{{product.pictureUrl}}">
+      <ul style="list-style: none">
+        <li *ngFor="let picture of product.pictures">
+          <img src="{{picture.pictureLink}}">
+        </li>
+      </ul>
     </div>
     <div>
       <h1>{{product.name}}</h1>
