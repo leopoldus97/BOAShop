@@ -25,18 +25,19 @@
 #profileIcon{
   padding-left: 20px;
 }
+
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-}
-.navbar.navbar-expand {
-  background-color: #99ccff;
-  border: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+
 }
 
-.navbar.navbar-expand .navbar-collapse {
+.nav-item:hover{
+  border-top: solid black 1px;
+}
+
+.navbar{
+  background-color: #99ccff;
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
