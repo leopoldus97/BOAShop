@@ -21,6 +21,7 @@
   padding-right: 5px;
   margin-top: auto;
   margin-bottom: auto;
+  font-size: 30px;
 }
 #profileIcon{
   padding-left: 20px;
@@ -37,8 +38,26 @@
 }
 
 .navbar{
-  background-color: #99ccff;
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+
+
+
+.basket-count {
+  width: 22px;
+  line-height: 22px;
+  background-color: #ddd;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  position: absolute;
+  top: 23%;
+  right: 1%;
+  color: #000;
+  font-size: 12px;
+  text-align: center;
+  z-index: 1000000;
+  display: block;
 }

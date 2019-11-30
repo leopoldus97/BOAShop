@@ -1,9 +1,8 @@
-<div class="divContainer">
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand" [containerInside]="false">
+
+<nav class="navbar navbar-expand">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#"><img class="logo" src="https://scontent.fzgh1-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/77242776_2638993426144321_7629764772891721728_n.png?_nc_cat=100&_nc_ohc=P7USRn1U6ZMAQnFQMaUr8I78_I6MR2CvxHECCMM0-oHvQTTPZP-LClEDQ&_nc_ht=scontent.fzgh1-1.fna&oh=3bc8175b11f6608d5a4bcfa05701d95a&oe=5E84FDB8"></a></mdb-navbar-brand>
+<a class="navbar-brand" routerLink=""><img src="../../../assets/Images/Logos/BOALogo.png" class="logo"/></a>
 
   <!-- Collapsible content -->
   <links>
@@ -12,34 +11,35 @@
     <ul class="navbar-nav mr-auto">
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown unfold" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect style="color:black">
-          MEN<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">T-Shirts</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Hoodies & Sweatshirts</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Accessories</a>
+      <li class="nav-item dropdown">
+        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown"
+           aria-expanded="false">
+          MEN<span class="caret"></span></button>
+        <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item" href="#">T-Shirts</a>
+          <a class="dropdown-item" href="#">Hoodies & Sweatshirts</a>
+          <a class="dropdown-item" href="#">Accessories</a>
         </div>
       </li>
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect style="color:black">
-         WOMEN<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Tops</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Dresses & Skirts</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Hoodies & Sweatshirts</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Sportswear</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Swimwear</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Accessories</a>
+      <li class="nav-item dropdown">
+        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown">
+         WOMEN<span class="caret"></span></button>
+        <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item" href="#">Tops</a>
+          <a class="dropdown-item" href="#">Dresses & Skirts</a>
+          <a class="dropdown-item" href="#">Hoodies & Sweatshirts</a>
+          <a class="dropdown-item" href="#">Sportswear</a>
+          <a class="dropdown-item" href="#">Swimwear</a>
+          <a class="dropdown-item" href="#">Accessories</a>
         </div>
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect style="color:black">
-          COLLECTIONS<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+      <li class="nav-item dropdown">
+        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown">
+          COLLECTIONS<span class="caret"></span></button>
+        <div class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">BOA x Champion</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">The 6ix Collection</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">The Rose Collection</a>
@@ -48,17 +48,21 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" style="color:black">BLOG</a>
+        <button class="btn btn-outline-flat">BLOG</button>
       </li>
 
       <li class="icon" id="profileIcon" routerLink="login">
-        <a><img src="../../../assets/Images/Icons/userWhite.png" height="20" width="20" style="filter: invert(100%)"/></a>
+        <a><i class="fas fa-user"></i></a>
       </li>
       <li  class="icon">
-        <a><img  src="../../../assets/Images/Icons/searchWhite.png" height="20" width="20" style="filter: invert(100%)"/></a>
+        <a><i class="fas fa-search"></i></a>
       </li>
       <li class="icon">
-        <a><img src="../../../assets/Images/Icons/shoppingCartWhite.png" height="20" width="20" style="filter: invert(100%)"/></a>
+        <a routerLink="/cart">
+        <i class="fas fa-shopping-cart" style="color: black">
+          <div class="basket-count">{{cartItems}}</div>
+        </i>
+        </a>
       </li>
 
     </ul>
@@ -66,6 +70,4 @@
   </links>
   <!-- Collapsible content -->
 
-</mdb-navbar>
-<!--/.Navbar-->
-</div>
+</nav>
