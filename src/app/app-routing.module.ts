@@ -9,6 +9,7 @@ import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {AdminListComponent} from './admin/admin-list/admin-list.component';
 import {AdminDetailsComponent} from './admin/admin-details/admin-details.component';
 import {AdminCreateComponent} from './admin/admin-create/admin-create.component';
+import {UserCreateComponent} from './user/user-create/user-create.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,9 @@ const routes: Routes = [
       { path: 'details/:id', component: AdminDetailsComponent},
       { path: 'create', component: AdminCreateComponent}
     ]
-  }
+  },
+  { path: 'login', component: LoginPageComponent},
+  { path: 'create-account', component: UserCreateComponent }
 ];
 
 @NgModule({

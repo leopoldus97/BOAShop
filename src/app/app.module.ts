@@ -16,6 +16,7 @@ import { AdminListComponent } from './admin/admin-list/admin-list.component';
 import { AdminCreateComponent } from './admin/admin-create/admin-create.component';
 import { AdminDetailsComponent } from './admin/admin-details/admin-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserCreateComponent } from './user/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     ProductDetailComponent,
     ShoppingCartComponent,
+    LoginPageComponent,
+    UserCreateComponent,
     LoginPageComponent,
     AdminPageComponent,
     AdminListComponent,

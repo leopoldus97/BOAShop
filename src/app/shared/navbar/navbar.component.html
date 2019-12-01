@@ -1,4 +1,4 @@
-
+<div class="d-flex divContainer">
 <nav class="navbar navbar-expand">
 
   <!-- Navbar brand -->
@@ -12,8 +12,7 @@
 
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown"
-           aria-expanded="false">
+        <button class="btn btn-outline-light dropdown-toggle">
           MEN<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item" href="#">T-Shirts</a>
@@ -23,7 +22,7 @@
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle">
          WOMEN<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item" href="#">Tops</a>
@@ -37,27 +36,30 @@
 
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <button class="btn btn-outline-flat dropdown-toggle" data-toggle="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle">
           COLLECTIONS<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">BOA x Champion</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">The 6ix Collection</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">The Rose Collection</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Half in Half Collection</a>
+          <a class="dropdown-item waves-light" href="#">BOA x Champion</a>
+          <a class="dropdown-item waves-light" href="#">The 6ix Collection</a>
+          <a class="dropdown-item waves-light" href="#">The Rose Collection</a>
+          <a class="dropdown-item waves-light" href="#">Half in Half Collection</a>
         </div>
       </li>
 
       <li class="nav-item">
-        <button class="btn btn-outline-flat">BLOG</button>
+        <button class="btn btn-outline-light">BLOG</button>
       </li>
 
       <li class="icon" id="profileIcon">
         <a routerLink="/login">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user" style="color: black"></i>
         </a>
       </li>
       <li  class="icon">
-        <a><i class="fas fa-search"></i></a>
+        <form action="">
+          <input type="search" id="search" placeholder="Search" aria-label="Search">
+          <i class="fa fa-search"></i>
+        </form>
       </li>
       <li class="icon">
         <a routerLink="/cart">
@@ -73,3 +75,4 @@
   <!-- Collapsible content -->
 
 </nav>
+</div>
