@@ -81,8 +81,18 @@ background-color: whitesmoke;
   border: none;
   background-color: whitesmoke;
 }
+
 #quantityPart{
   margin-top: 40px;
   position: relative;
   left: 30px
 }
+
+.loader {
+  width: 200px;
+  height: 200px;
+  margin-top: 20%;
+  margin-bottom: 25%;
+  font-size: 60px;
+}
+

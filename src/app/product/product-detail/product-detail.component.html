@@ -1,5 +1,5 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<div class="mainContainer">
+
+<div *ngIf="product" class="mainContainer">
 <div class="container">
   <!-- <div class="row"> -->
 
@@ -173,7 +173,13 @@
 
 
 </div>
-
+<div *ngIf="!product">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 
 
 
