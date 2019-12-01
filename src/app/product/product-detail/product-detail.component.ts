@@ -21,4 +21,8 @@ export class ProductDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.getProductByID(id).subscribe(product => this.product = product);
   }
+
+  activate(){
+    $().button('toggle');
+  }
 }

@@ -1,0 +1,88 @@
+.pictures{
+background-color: whitesmoke;
+  width: 90%;
+  padding-bottom: 35px;
+  margin-left: 0;
+}
+.mainContainer{
+  width: 95%;
+  margin: auto;
+  padding-top: 50px;
+}
+.container{
+  align-content: flex-start;
+  margin-left: 0;
+}
+.stampSizing{
+  width: 72px;
+  height: 48px;
+}
+.textCenter{
+  text-align: center;
+}
+
+
+.sizes {
+  list-style-type:none;
+  text-align: center;
+  margin:5px 0 0 0;
+  padding:0;
+}
+
+.sizes li {
+  float:left;
+  margin:0 2.5px 0 2.5px;
+  width: 42px;
+  height: 40px;
+  position:relative;
+}
+
+.sizes label, .sizes input {
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.sizes input[type="radio"] {
+  opacity:0.011;
+  z-index:100;
+}
+
+.sizes input[type="radio"]:checked + label {
+  background:lightgray;
+
+}
+
+.sizes label {
+  padding:5px;
+  border:1px solid #CCC;
+  cursor:pointer;
+  z-index:90;
+}
+
+.sizes label:hover {
+  background:whitesmoke;
+}
+
+#addToCart{
+  background-color: white;
+  color: green;
+  width: 100%;
+  margin: 5px 0 5px;
+}
+#buyIt{
+  width: 100%;
+  margin-bottom: 70px;
+}
+#quantityInputField{
+  border: none;
+  background-color: whitesmoke;
+}
+#quantityPart{
+  margin-top: 40px;
+  position: relative;
+  left: 30px
+}
