@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../shared/services/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../shared/models/product';
 // import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -28,6 +28,7 @@ export class AdminDetailsComponent implements OnInit {
   constructor(
     private service: ProductService,
     private route: ActivatedRoute,
+    private router: Router
     // private fb: FormBuilder
   ) { }
 
@@ -40,8 +41,12 @@ export class AdminDetailsComponent implements OnInit {
     this.service.getProductByID(id).subscribe(product => { this.product = product; });
   }
 
-  show() {
-    /*this.productForm.patchValue({
+  updateProduct() {
+    this.service.updateProduct(this.product).subscribe(() => this.router.navigateByUrl('/admin/list'));
+  }
+
+  /*show() {
+    this.productForm.patchValue({
       name: this.product.name,
       type: this.product.type,
       gender: this.product.gender,
@@ -51,6 +56,6 @@ export class AdminDetailsComponent implements OnInit {
       collection: this.product.collection,
       description: this.product.description,
       pictures: this.product.pictures
-    });*/
-  }
+    });
+  }*/
 }
