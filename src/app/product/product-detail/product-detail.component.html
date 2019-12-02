@@ -21,7 +21,7 @@
         <div>
 
           <div>
-            <h1 class="textCenter">"{{product.collection.name}}"</h1>
+            <h1 *ngIf="product.collection" class="textCenter">"{{product.collection.name}}"</h1>
             <h1 class="textCenter">{{product.name}}</h1><br>
             <div>
               <h3 class="textCenter"><b>${{product.price}}</b></h3>
@@ -32,7 +32,7 @@
               </div>
 
               <!-- Size selection -->
-              <ul class="sizes" >
+              <ul class="sizes">
                 <li>
                   <input type="radio" id="XS" name="size" />
                   <label for="XS">XS</label>

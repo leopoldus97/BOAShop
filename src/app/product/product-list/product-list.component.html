@@ -2,10 +2,10 @@
 <div *ngIf="products">
   <h1>{{name}}</h1>
   <div>
-    <ul>
-      <li *ngFor="let product of products">
+    <ul *ngFor="let product of products">
+      <li>
         <a routerLink="/products/{{product.id}}">
-          <div>"{{product.collection.name}}" {{product.name}} - {{product.price | currency}}</div>
+          <div style="display: inline-block"><h6 *ngIf="product.collection">"{{product.collection.name}}"</h6>   {{product.name}} - {{product.price | currency}}</div>
         </a>
       </li>
     </ul>

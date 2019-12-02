@@ -22,7 +22,5 @@ export class ProductDetailComponent implements OnInit {
     this.service.getProductByID(id).subscribe(product => this.product = product);
   }
 
-  activate(){
-    $().button('toggle');
-  }
+
 }
