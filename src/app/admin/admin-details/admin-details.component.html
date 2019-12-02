@@ -1,5 +1,14 @@
 <ul class="list-unstyled">
-  <li>Name: {{product.name}}</li>
-  <li>Type: {{product.type}}</li>
-  <li>Gender: {{product.gender}}</li>
+  <li>Name: <input [(ngModel)]="product.name"></li>
+  <li>Type: <input [(ngModel)]="product.type"></li>
+  <li>Gender:
+    <select [(ngModel)]="product.gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </li>
 </ul>
+<div>
+  <button (click)="getProductByID()">Reset</button>
+  <button (click)="updateProduct()">Save</button>
+</div>
