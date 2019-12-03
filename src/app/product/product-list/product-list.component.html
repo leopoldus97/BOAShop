@@ -1,11 +1,25 @@
-
-<div *ngIf="products">
-  <h1>{{name}}</h1>
-  <div>
-    <ul *ngFor="let product of products">
-      <li>
+<div class="container" style="padding-left: 25px; padding-right: 20px">
+  <div class="row">
+    <ul class="card card-cascade card-custom" *ngFor="let product of products">
+      <li style="list-style: none;  text-align: center">
         <a routerLink="/products/{{product.id}}">
-          <div style="display: inline-block"><h6 *ngIf="product.collection">"{{product.collection.name}}"</h6>   {{product.name}} - {{product.price | currency}}</div>
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+            <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" >
+            <a>
+              <div class="mask rgba-white-strong"></div>
+            </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center" style="color: black">
+
+            <!-- Title -->
+            <h4 class="card-title"><strong *ngIf="product.collection">{{product.collection.name}}</strong></h4>
+            <!-- Subtitle -->
+            <h6 class="font-weight-bold py-2">{{product.name}} - {{product.price | currency}}</h6>
+
+          </div>
         </a>
       </li>
     </ul>
@@ -18,4 +32,3 @@
     </div>
   </div>
 </div>
-
