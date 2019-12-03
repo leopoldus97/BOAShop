@@ -3,20 +3,18 @@
     <ul class="card card-cascade card-custom" *ngFor="let product of products">
       <li style="list-style: none;  text-align: center">
         <a routerLink="/products/{{product.id}}">
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
+
+          <div class="view view-cascade overlay" style="border-radius: 5%">
             <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" >
             <a>
-              <div class="mask rgba-white-strong"></div>
+              <div class="mask rgba-yellow-light"></div>
             </a>
           </div>
 
-          <!-- Card content -->
           <div class="card-body card-body-cascade text-center" style="color: black">
 
-            <!-- Title -->
             <h4 class="card-title"><strong *ngIf="product.collection">{{product.collection.name}}</strong></h4>
-            <!-- Subtitle -->
+
             <h6 class="font-weight-bold py-2">{{product.name}} - {{product.price | currency}}</h6>
 
           </div>
