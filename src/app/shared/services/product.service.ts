@@ -11,6 +11,7 @@ import {take} from 'rxjs/operators';
 export class ProductService {
   url = environment.apiUrl + 'products';
   filter: string;
+  properType = 'Available Products';
   constructor(private http: HttpClient) { }
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + '?' + this.filter).pipe(take(1));
@@ -28,7 +29,8 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id, {responseType: 'text'}).pipe(take(1));
   }
-  setFilter(filter: string) {
+  setFilter(filter: string, properType: string) {
     this.filter = filter;
+    this.properType = properType;
   }
 }

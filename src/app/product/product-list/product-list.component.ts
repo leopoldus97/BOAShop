@@ -3,7 +3,7 @@ import {Product} from '../../shared/models/product';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../shared/services/product.service';
 import {Observable} from "rxjs";
-import {ErrorHandlerService} from "../../shared/services/error-handler.service";
+import {ErrorHandlerService} from '../../shared/services/error-handler.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   name: string;
   errorMessage = '';
-  constructor(private route: Router, private service: ProductService, private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) {
+  constructor(private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) {
     activeRoute.params.subscribe(val => {
       this.getProducts2();
     });
@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
-    this.service.getProducts()
+    this.productService.getProducts()
       .subscribe(listOfProducts => {
           this.products = listOfProducts;
         }
@@ -31,7 +31,7 @@ export class ProductListComponent implements OnInit {
   }
   getProducts2() {
     this.errorMessage = '';
-    this.service.getProducts()
+    this.productService.getProducts()
         .subscribe(
           listOfProducts => {
             this.products = listOfProducts;
@@ -48,5 +48,8 @@ export class ProductListComponent implements OnInit {
       return true;
     } else { return false; }
     }
+  isEmpty(str): boolean {
+    return (!str || 0 === str.length);
+  }
   }
 

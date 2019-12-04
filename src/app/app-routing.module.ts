@@ -11,11 +11,13 @@ import {AdminDetailsComponent} from './admin/admin-details/admin-details.compone
 import {AdminCreateComponent} from './admin/admin-create/admin-create.component';
 import {UserCreateComponent} from './user/user-create/user-create.component';
 import {AdminCollectionComponent} from './admin/admin-collection/admin-collection.component';
+import {CollectionListComponent} from './collection/collection-list/collection-list.component';
 
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'collections', component: CollectionListComponent },
   {path: 'products/:name', component: ProductListComponent},
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'cart', component: ShoppingCartComponent },

@@ -1,4 +1,5 @@
 <div *ngIf="products" class="container" style="padding-left: 25px; padding-right: 20px">
+  <div *ngIf="products" id="categoryName"><h1>{{productService.properType}}</h1></div>
   <div class="row">
     <ul class="card card-cascade card-custom" *ngFor="let product of products">
       <li style="list-style: none;  text-align: center">
@@ -33,5 +34,5 @@
 <div *ngIf="!products && productsInStock()" id="noProductsContainer">
   <p style=" font-size:30px">Currently no products in this category.</p>
   <br>
-  <button type="button" class="btn btn-light" id="backButton" (click)="this.service.setFilter('')" routerLink="/products">Back to the store</button>
+  <button type="button" class="btn btn-light" id="backButton" (click)="this.productService.setFilter('','Available Products')" routerLink="/products">Back to the store</button>
 </div>

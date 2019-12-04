@@ -15,8 +15,8 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
     this.cartItems = 2;
   }
-  setFilter(specification: string, routeTail: string) {
-    this.productService.setFilter(specification);
+  setFilter(specification: string, routeTail: string, properType: string) {
+    this.productService.setFilter(specification, properType);
     this.router.navigateByUrl('products' + routeTail);
   }
 }

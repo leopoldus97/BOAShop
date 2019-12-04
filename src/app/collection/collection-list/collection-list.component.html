@@ -1,0 +1,33 @@
+<div *ngIf="collections" class="container" style="padding-left: 25px; padding-right: 20px">
+  <div  id="categoryName"><h1>Collections</h1></div>
+  <div class="row">
+    <ul class="card card-cascade card-custom" *ngFor="let collection of collections">
+      <li style="list-style: none;  text-align: center">
+        <a >
+
+          <div class="view view-cascade overlay" style="border-radius: 5%">
+            <img class="card-img-top" *ngIf="collection.products[0].pictures[0]!==null" src="{{collection.products[0].pictures[0].pictureLink}}" >
+            <a>
+              <div class="mask rgba-yellow-light"></div>
+            </a>
+          </div>
+
+          <div class="card-body card-body-cascade text-center" style="color: black">
+
+            <h4 class="card-title"><strong >"{{collection.name}}"</strong></h4>
+
+          <!--  <h6 class="font-weight-bold py-2">{{product.name}} - {{product.price | currency}}</h6> -->
+
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="!collections">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
