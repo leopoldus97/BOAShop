@@ -15,7 +15,8 @@ import {UserCreateComponent} from './user/user-create/user-create.component';
 const routes: Routes = [
   { path: '', component: WelcomePageComponent },
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
+  {path: 'products/:name', component: ProductListComponent},
+  { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'login', component: LoginPageComponent},
 

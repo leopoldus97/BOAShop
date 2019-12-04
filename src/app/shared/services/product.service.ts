@@ -10,9 +10,10 @@ import {take} from 'rxjs/operators';
 })
 export class ProductService {
   url = environment.apiUrl + 'products';
+  filter: string;
   constructor(private http: HttpClient) { }
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url).pipe(take(1));
+    return this.http.get<Product[]>(this.url + '?' + this.filter).pipe(take(1));
   }
   getProductByID(id: number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id).pipe(take(1));
@@ -25,5 +26,8 @@ export class ProductService {
   }
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id).pipe(take(1));
+  }
+  setFilter(filter: string) {
+    this.filter = filter;
   }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Product} from '../../shared/models/product';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../shared/services/product.service';
-
+import {Observable} from "rxjs";
+import {ErrorHandlerService} from "../../shared/services/error-handler.service";
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -11,13 +12,41 @@ import {ProductService} from '../../shared/services/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[];
   name: string;
-  constructor(private route: Router, private service: ProductService) { }
-
+  errorMessage = '';
+  constructor(private route: Router, private service: ProductService, private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) {
+    activeRoute.params.subscribe(val => {
+      this.getProducts2();
+    });
+  }
   ngOnInit() {
-    this.getProducts();
-  }
-  getProducts() {
-    this.service.getProducts().subscribe(listOfProducts => this.products = listOfProducts);
+      this.getProducts2();
   }
 
-}
+  getProducts() {
+    this.service.getProducts()
+      .subscribe(listOfProducts => {
+          this.products = listOfProducts;
+        }
+      );
+  }
+  getProducts2() {
+    this.errorMessage = '';
+    this.service.getProducts()
+        .subscribe(
+          listOfProducts => {
+            this.products = listOfProducts;
+          },
+          (error) => {
+            this.errorHandler.handleError(error);
+            this.errorMessage = this.errorHandler.errorMessage;
+            this.products = null;
+          },
+        );
+    }
+    productsInStock() {
+    if (this.errorMessage === 'No products found.') {
+      return true;
+    } else { return false; }
+    }
+  }
+

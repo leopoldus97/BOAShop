@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand">
 
   <!-- Navbar brand -->
-<a class="navbar-brand" routerLink="products"><img src="../../../assets/Images/Logos/BOALogo.png" class="logo"/></a>
+<a class="navbar-brand" routerLink="products" (click)="setFilter('','')" ><img src="../../../assets/Images/Logos/BOALogo.png" class="logo"/></a>
 
   <!-- Collapsible content -->
   <links>
@@ -12,25 +12,25 @@
 
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <button class="btn btn-outline-light dropdown-toggle">
+        <button class="btn btn-outline-light dropdown-toggle" (click)="setFilter('gender=men','/Men')">
           MEN<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item" href="#">T-Shirts</a>
-          <a class="dropdown-item" href="#">Hoodies & Sweatshirts</a>
-          <a class="dropdown-item" href="#">Accessories</a>
+          <a class="dropdown-item" (click)="setFilter('gender=men&type=T-Shirts','/Men-T-Shirts')">T-Shirts</a>
+          <a class="dropdown-item" (click)="setFilter('gender=men&type=Hoodies And Sweatshirts','/Men-Hoodies-Sweatshirts')">Hoodies & Sweatshirts</a>
+          <a class="dropdown-item" (click)="setFilter('gender=men&type=Accessories','/Men-Accessories')">Accessories</a>
         </div>
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <button class="btn btn-outline-light dropdown-toggle">
+        <button class="btn btn-outline-light dropdown-toggle" (click)="setFilter('gender=women','/Women')">
          WOMEN<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item" href="#">Tops</a>
-          <a class="dropdown-item" href="#">Dresses & Skirts</a>
-          <a class="dropdown-item" href="#">Hoodies & Sweatshirts</a>
-          <a class="dropdown-item" href="#">Sportswear</a>
-          <a class="dropdown-item" href="#">Swimwear</a>
-          <a class="dropdown-item" href="#">Accessories</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Tops','/Women-Tops')">Tops</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Dresses And Skirts','/Women-Dresses-Skirts')">Dresses & Skirts</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Hoodies And Sweatshirts','/Women-Hoodies-Sweatshirts')">Hoodies & Sweatshirts</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Sportswear','/Women-Sportswear')">Sportswear</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Swimwear','/Women-Swimwear')">Swimwear</a>
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=Accessories','/Women-Accessories')">Accessories</a>
         </div>
       </li>
 
@@ -39,10 +39,10 @@
         <button class="btn btn-outline-light dropdown-toggle">
           COLLECTIONS<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" href="#">BOA x Champion</a>
-          <a class="dropdown-item waves-light" href="#">The 6ix Collection</a>
-          <a class="dropdown-item waves-light" href="#">The Rose Collection</a>
-          <a class="dropdown-item waves-light" href="#">Half in Half Collection</a>
+          <a class="dropdown-item waves-light" (click)="setFilter('Collection=Boa x Champion','/BOA-x-Champion')">BOA x Champion</a>
+          <a class="dropdown-item waves-light" (click)="setFilter('Collection=The 6ix','/The-6ix-Collection')">The 6ix Collection</a>
+          <a class="dropdown-item waves-light" (click)="setFilter('Collection=The Rose','/The-Rose-Collection')">The Rose Collection</a>
+          <a class="dropdown-item waves-light" (click)="setFilter('Collection=Half in Half','/Half-in-Half-Collection')">Half in Half Collection</a>
         </div>
       </li>
 

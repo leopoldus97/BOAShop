@@ -17,7 +17,7 @@ import { AdminCreateComponent } from './admin/admin-create/admin-create.componen
 import { AdminDetailsComponent } from './admin/admin-details/admin-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserCreateComponent } from './user/user-create/user-create.component';
-
+import {ErrorHandlerService} from "./shared/services/error-handler.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +42,7 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
     MDBBootstrapModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [ErrorHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
