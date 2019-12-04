@@ -10,6 +10,7 @@ import {AdminListComponent} from './admin/admin-list/admin-list.component';
 import {AdminDetailsComponent} from './admin/admin-details/admin-details.component';
 import {AdminCreateComponent} from './admin/admin-create/admin-create.component';
 import {UserCreateComponent} from './user/user-create/user-create.component';
+import {AdminCollectionComponent} from './admin/admin-collection/admin-collection.component';
 
 
 const routes: Routes = [
@@ -22,9 +23,10 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminPageComponent,
     children: [
-      { path: 'list', component: AdminListComponent},
+      { path: '', component: AdminListComponent},
       { path: 'details/:id', component: AdminDetailsComponent},
-      { path: 'create', component: AdminCreateComponent}
+      { path: 'create', component: AdminCreateComponent},
+      { path: 'collection', component: AdminCollectionComponent}
     ]
   },
   { path: 'login', component: LoginPageComponent},

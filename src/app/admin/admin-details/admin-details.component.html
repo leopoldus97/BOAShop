@@ -1,14 +1,44 @@
-<ul class="list-unstyled">
-  <li>Name: <input [(ngModel)]="product.name"></li>
-  <li>Type: <input [(ngModel)]="product.type"></li>
-  <li>Gender:
-    <select [(ngModel)]="product.gender">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-  </li>
-</ul>
-<div>
-  <button (click)="getProductByID()">Reset</button>
-  <button (click)="updateProduct()">Save</button>
+<div *ngIf="product">
+  <ul class="list-unstyled">
+    <li>Name: <input [(ngModel)]="product.name"></li>
+    <li>Type: <input [(ngModel)]="product.type"></li>
+    <li>Gender:
+      <select [(ngModel)]="product.gender">
+        <option value="Men">Male</option>
+        <option value="Women">Female</option>
+        <option value="Unisex">Unisex</option>
+      </select>
+    </li>
+
+    <li *ngIf="togCol==1">
+      <button (click)="removeCollection()"> Remove Collection</button>
+      <select [(ngModel)]="product.collection.id" name="Select collection">
+        <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
+      </select>
+    </li>
+
+    <li *ngIf="togCol==0">
+      <button (click)="addCollection()"> Add Collection</button>No collection
+    </li>
+    <li>Description:</li>
+    <li><textarea [(ngModel)]="product.description"></textarea></li>
+  </ul>
+  <div>
+    <button (click)="getProductByID()">Reset</button>
+    <button (click)="updateProduct()">Save</button>
+  </div>
+  <p>{{product | json}}</p>
 </div>
+
+
+
+
+<div *ngIf="!product">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+

@@ -1,4 +1,14 @@
 input {
   background-color: transparent;
   border-color: transparent;
+  width: 90%;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea{
+  width: 500px;
+  height: 200px;
 }

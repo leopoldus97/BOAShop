@@ -18,6 +18,7 @@ import { AdminDetailsComponent } from './admin/admin-details/admin-details.compo
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import {ErrorHandlerService} from "./shared/services/error-handler.service";
+import { AdminCollectionComponent } from './admin/admin-collection/admin-collection.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import {ErrorHandlerService} from "./shared/services/error-handler.service";
     AdminPageComponent,
     AdminListComponent,
     AdminCreateComponent,
-    AdminDetailsComponent
+    AdminDetailsComponent,
+    AdminCollectionComponent
   ],
   imports: [
     BrowserModule,
