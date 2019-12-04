@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Product} from '../../shared/models/product';
+import {ProductService} from '../../shared/services/product.service';
+import {CollectionService} from '../../shared/services/collection.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Collection} from '../../shared/models/collection';
 
 @Component({
   selector: 'app-admin-create',
@@ -7,9 +12,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCreateComponent implements OnInit {
 
-  constructor() { }
+  product: Product;
+  togCol = 0;
+  collections: Collection[];
+
+  constructor(
+    private proSer: ProductService,
+    private colSer: CollectionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.getCollections();
+  }
+
+  addCollection() {
+    this.product.collection = {id: 0, name: 'Default', products: null};
+    this.togCol = 1;
+  }
+
+  removeCollection() {
+    this.product.collection = null;
+    this.togCol = 0;
+  }
+
+  createProduct() {
+    this.setCollection();
+    this.proSer.createProduct(this.product).subscribe(() => this.router.navigateByUrl('/admin'));
+  }
+
+  getCollections() {
+    this.colSer.getCollections().subscribe(data => this.collections = data);
+  }
+
+  setCollection() {
+    if (this.product.collection != null) {
+      if (this.product.collection.id === 0) {
+        this.product.collection = null;
+      } else {
+        this.colSer.getCollectionByID(this.product.collection.id).subscribe(data => this.product.collection = data);
+      }
+    } else {
+      this.product.collection = null;
+    }
   }
 
 }

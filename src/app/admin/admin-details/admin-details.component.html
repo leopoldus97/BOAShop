@@ -12,7 +12,8 @@
 
     <li *ngIf="togCol==1">
       <button (click)="removeCollection()"> Remove Collection</button>
-      <select [(ngModel)]="product.collection.id" name="Select collection">
+      <select [(ngModel)]="product.collection.id">
+        <option value="0" disabled hidden style="color: red">Choose collection</option>
         <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
       </select>
     </li>

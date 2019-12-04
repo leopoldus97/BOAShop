@@ -1,4 +1,27 @@
-<ul class="list-unstyled">
-  <li>Name: <input></li>
-  <li>Type: <input></li>
-</ul>
+<div>
+  <ul class="list-unstyled">
+    <li>Name: <input [(ngModel)]="product.name"></li>
+    <li>Type: <input [(ngModel)]="product.type"></li>
+    <li>Gender:
+      <select [(ngModel)]="product.gender">
+        <option value="" disabled hidden>Select gender</option>
+        <option value="Men">Male</option>
+        <option value="Women">Female</option>
+        <option value="Unisex">Unisex</option>
+      </select>
+    </li>
+    <li *ngIf="togCol==1">
+      <button (click)="removeCollection()"> Remove Collection</button>
+      <select [(ngModel)]="product.collection.id">
+        <option value="0" disabled hidden style="color: red">Choose collection</option>
+        <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
+      </select>
+    </li>
+
+    <li *ngIf="togCol==0">
+      <button (click)="addCollection()"> Add Collection</button>No collection
+    </li>
+    <li>Description:</li>
+    <li><textarea [(ngModel)]="product.description"></textarea></li>
+  </ul>
+</div>

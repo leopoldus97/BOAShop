@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../shared/models/product';
 import {CollectionService} from '../../shared/services/collection.service';
 import {Collection} from '../../shared/models/collection';
-// import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-admin-details',
