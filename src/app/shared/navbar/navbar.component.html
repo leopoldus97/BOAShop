@@ -39,10 +39,11 @@
         <button class="btn btn-outline-light dropdown-toggle" routerLink="/collections">
           COLLECTIONS<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" (click)="setFilter('Collection=Boa x Champion','/BOA-x-Champion','BOA x Champion')">BOA x Champion</a>
-          <a class="dropdown-item waves-light" (click)="setFilter('Collection=The 6ix','/The-6ix-Collection','The 6ix Collection')">The 6ix Collection</a>
-          <a class="dropdown-item waves-light" (click)="setFilter('Collection=The Rose','/The-Rose-Collection','The Rose Collection')">The Rose Collection</a>
-          <a class="dropdown-item waves-light" (click)="setFilter('Collection=Half in Half','/Half-in-Half-Collection','Half in Half Collection')">Half in Half Collection</a>
+          <ul *ngFor="let collection of collections" class="list-unstyled">
+          <li>
+            <a class="dropdown-item waves-light" (click)="setFilter('Collection=' + collection.name,'/'+collection.name.trim(),collection.name+' Collection')">{{collection.name}}</a>
+          </li>
+          </ul>
         </div>
       </li>
 

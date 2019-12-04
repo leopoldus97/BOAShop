@@ -5,7 +5,7 @@
       <li style="list-style: none;  text-align: center">
         <a >
 
-          <div class="view view-cascade overlay" style="border-radius: 5%">
+          <div class="view view-cascade overlay" style="border-radius: 5%" (click)="setFilter('Collection=' + collection.name,'/'+collection.name.trim(),collection.name+' Collection')">
             <img class="card-img-top" *ngIf="collection.products[0].pictures[0]!==null" src="{{collection.products[0].pictures[0].pictureLink}}" >
             <a>
               <div class="mask rgba-yellow-light"></div>
