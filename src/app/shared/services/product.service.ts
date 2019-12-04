@@ -21,11 +21,12 @@ export class ProductService {
   createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.url,  product).pipe(take(1));
   }
-  updateProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(this.url + '/' + product.id, product).pipe(take(1));
+  updateProduct(product: Product): Observable<any> {
+    // @ts-ignore
+    return this.http.put<Product>(this.url + '/' + product.id, product, {responseType: 'text'}).pipe(take(1));
   }
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(this.url + '/' + id).pipe(take(1));
+    return this.http.delete(this.url + '/' + id, {responseType: 'text'}).pipe(take(1));
   }
   setFilter(filter: string) {
     this.filter = filter;
