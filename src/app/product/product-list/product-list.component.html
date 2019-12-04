@@ -3,9 +3,6 @@
     <ul class="card card-cascade card-custom" *ngFor="let product of products">
       <li style="list-style: none;  text-align: center">
         <a routerLink="/productdetail/{{product.id}}">
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
-        <a routerLink="/products/{{product.id}}">
 
           <div class="view view-cascade overlay" style="border-radius: 5%">
             <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" >
@@ -16,10 +13,6 @@
 
           <div class="card-body card-body-cascade text-center" style="color: black">
 
-
-            <!-- Title -->
-            <h4 class="card-title"><strong *ngIf="product.collection">"{{product.collection.name}}"</strong></h4>
-            <!-- Subtitle -->
             <h4 class="card-title"><strong *ngIf="product.collection">{{product.collection.name}}</strong></h4>
 
             <h6 class="font-weight-bold py-2">{{product.name}} - {{product.price | currency}}</h6>
@@ -39,7 +32,6 @@
 </div>
 <div *ngIf="!products && productsInStock()" id="noProductsContainer">
   <p style=" font-size:30px">Currently no products in this category.</p>
-    <br>
+  <br>
   <button type="button" class="btn btn-light" id="backButton" (click)="this.service.setFilter('')" routerLink="/products">Back to the store</button>
 </div>
-
