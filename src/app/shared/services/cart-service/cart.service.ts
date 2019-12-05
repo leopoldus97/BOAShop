@@ -22,6 +22,9 @@ export class CartService {
   addProduct(toAdd: ProductQuantity) {
     if (this.currentCart === null) {
     this.currentCart = [toAdd];
+    } else if (this.checkRepeatingProducts(toAdd)) {
+      const p = this.currentCart.find(pr => pr.product.id === toAdd.product.id && pr.size === toAdd.size);
+      p.quantity += toAdd.quantity;
     } else {
      this.currentCart.push(toAdd);
     }
@@ -29,8 +32,16 @@ export class CartService {
   updateProducts(updated: ProductQuantity[]) {
     this.currentCart = updated;
   }
-  availableID(){
+  availableID() {
     this.id++;
     return this.id;
   }
+  checkRepeatingProducts(product: ProductQuantity) {
+    if (this.currentCart.find(pr => pr.product.id === product.product.id && pr.size === product.size ) !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

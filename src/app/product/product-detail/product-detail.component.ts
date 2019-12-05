@@ -12,7 +12,7 @@ import {CartService} from '../../shared/services/cart-service/cart.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  productQuantity: ProductQuantity = {id: 1, quantity: 1, product: null, size: 'XD' };
+  productQuantity: ProductQuantity = {id: 1, quantity: 1, product: null, size: 'XD', sum: 0 };
   constructor(private route: ActivatedRoute,
               private router: Router,
               private service: ProductService,
@@ -30,6 +30,7 @@ export class ProductDetailComponent implements OnInit {
       this.productQuantity.id = this.cartService.availableID();
       this.productQuantity.product = this.product;
       this.cartService.addProduct(this.productQuantity);
+      this.productQuantity.sum = (this.productQuantity.quantity * this.product.price);
     } else {
       // To-Do Popup with information that wrong input was provided
       this.productQuantity.quantity = 1;

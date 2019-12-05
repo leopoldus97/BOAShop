@@ -9,14 +9,31 @@ import {ProductQuantity} from '../shared/models/productQuantity';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-   currentProducts: ProductQuantity[];
+  currentProducts: ProductQuantity[];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit() {
     this.loadProducts();
   }
+
   loadProducts() {
     this.currentProducts = this.cartService.currentCart;
+  }
+
+  sumForProduct(product: ProductQuantity) {
+    if (product.quantity > 99) {
+      product.quantity = 99;
+      product.sum = this.formatSum(product.quantity * product.product.price);
+    } else {
+      product.sum = this.formatSum(product.quantity * product.product.price);
+    }
+  }
+  removeProduct(product: ProductQuantity) {
+    this.cartService.removeProduct(product);
+  }
+  formatSum(i: number): number {
+    return Math.round(i * 100) / 100;
   }
 }

@@ -3,6 +3,7 @@ import {ProductService} from '../services/product-service/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CollectionService} from '../services/collection-service/collection.service';
 import {Collection} from '../models/collection';
+import {CartService} from "../services/cart-service/cart.service";
 
 @Component({
   selector: 'app-navbar',
@@ -15,11 +16,14 @@ export class NavbarComponent implements OnInit {
   searchItem: string;
   itemList: [string, string, string, string, string, string, string];
   collections: Collection[];
-  constructor(private productService: ProductService, private router: Router, private collectionService: CollectionService) {}
+  constructor(private productService: ProductService,
+              private router: Router,
+              private collectionService: CollectionService,
+              private cartService: CartService) {}
 
     ngOnInit() {
+    this.cartItems = 1;
     this.getCollections();
-    this.cartItems = 2;
     this.searchItem = '';
     this.itemList = [
       'T-Shirts',

@@ -5,4 +5,5 @@ export interface ProductQuantity {
   product: Product;
   size: string;
   quantity: number;
+  sum: number;
 }

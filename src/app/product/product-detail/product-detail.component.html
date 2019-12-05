@@ -65,8 +65,13 @@
               <!-- Size selection -->
               <br>
               <div id="quantityPart">
-                <label>Quantity &nbsp;{{productQuantity.size}}</label>
-                <input [(ngModel)]="productQuantity.quantity" name="first" [ngModelOptions]="{standalone: true}" id="quantityInputField" type="number" style="margin: auto" min="1" max="100" value="1" required>
+                <label>Quantity &nbsp;</label>
+                <input [(ngModel)]="productQuantity.quantity" name="first" id="quantityInputField" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                       type = "number"
+                       maxlength = "2"
+                       min="1"
+                       max="99"
+                       value="1">
               </div>
               <div>
                 <button id="addToCart" type="button" class="btn btn-success" (click)="addToCart()">ADD TO CART</button>
