@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from '../../shared/services/product.service';
+import {ProductService} from '../../shared/services/product-service/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../shared/models/product';
-import {CollectionService} from '../../shared/services/collection.service';
+import {CollectionService} from '../../shared/services/collection-service/collection.service';
 import {Collection} from '../../shared/models/collection';
 
 @Component({

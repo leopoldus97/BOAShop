@@ -34,45 +34,47 @@
               <!-- Size selection -->
               <ul class="sizes">
                 <li>
-                  <input type="radio" id="XS" name="size" />
+                  <input type="radio" id="XS" name="size"  (click)="setSize('XS')"/>
                   <label for="XS">XS</label>
                 </li>
                 <li>
-                  <input type="radio" id="S" name="size" />
+                  <input type="radio" id="S" name="size" (click)="setSize('S')"/>
                   <label for="S">S</label>
                 </li>
                 <li>
-                  <input type="radio" id="M" name="size" />
+                  <input type="radio" id="M" name="size" (click)="setSize('M')"/>
                   <label for="M">M</label>
                 </li>
                 <li>
-                  <input type="radio" id="L" name="size" />
+                  <input type="radio" id="L" name="size" (click)="setSize('L')"/>
                   <label for="L">L</label>
                 </li>
                 <li>
-                  <input type="radio" id="XL" name="size" />
+                  <input type="radio" id="XL" name="size" (click)="setSize('XL')"/>
                   <label for="XL">XL</label>
                 </li>
                 <li>
-                  <input type="radio" id="2XL" name="size" />
+                  <input type="radio" id="2XL" name="size" (click)="setSize('2XL')"/>
                   <label for="2XL">2XL</label>
                 </li>
                 <li>
-                  <input type="radio" id="3XL" name="size" />
+                  <input type="radio" id="3XL" name="size" (click)="setSize('3XL')"/>
                   <label for="3XL">3XL</label>
                 </li>
               </ul>
               <!-- Size selection -->
               <br>
               <div id="quantityPart">
-                <label>Quantity &nbsp;</label>
-                <input id="quantityInputField" type="number" style="margin: auto">
+                <label>Quantity &nbsp;{{productQuantity.size}}</label>
+                <input [(ngModel)]="productQuantity.quantity" name="first" [ngModelOptions]="{standalone: true}" id="quantityInputField" type="number" style="margin: auto" min="1" max="100" value="1" required>
               </div>
               <div>
-                <button id="addToCart" type="button" class="btn btn-success" >ADD TO CART</button>
+                <button id="addToCart" type="button" class="btn btn-success" (click)="addToCart()">ADD TO CART</button>
               </div>
               <div>
                 <button id="buyIt" type="button" class="btn btn-success">BUY IT NOW</button>
+              </div>
+              <div>
               </div>
             </form>
             <!--STAMPS Container-->

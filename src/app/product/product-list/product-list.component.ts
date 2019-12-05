@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Product} from '../../shared/models/product';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
+import {ProductService} from '../../shared/services/product-service/product.service';
 import {Observable} from "rxjs";
 import {ErrorHandlerService} from '../../shared/services/error-handler.service';
 @Component({

@@ -1,5 +1,5 @@
 
-<div class="px-4 px-lg-0">
+<div class="px-4 px-lg-0" style="border: solid darkcyan">
 
   <div class="pb-5">
     <div class="container">
@@ -53,8 +53,8 @@
                 <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
+              <tr style="border: solid moccasin">
+                <th scope="row" >
                   <div class="p-2">
                     <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                     <div class="ml-3 d-inline-block align-middle">
@@ -66,6 +66,25 @@
                 <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
+              <!-- Test row -->
+              <ul  class="list-unstyled" style="border: solid red; width: 900px" *ngFor="let currentProduct of currentProducts ">
+                <li>
+              <tr>
+                <th scope="row">
+                  <div class="p-2">
+                    <img  src="{{currentProduct.product.pictures[0].pictureLink}}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                    <div class="ml-3 d-inline-block align-middle">
+                      <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">{{currentProduct.product.name}}</a></h5><span class="text-muted font-weight-normal font-italic">Size: {{currentProduct.size}}</span>
+                    </div>
+                  </div>
+                <td class="align-middle"><strong>${{currentProduct.product.price}}</strong></td>
+                <td class="align-middle"><strong>{{currentProduct.quantity}}</strong></td>
+                <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+                </li>
+              </ul>
+              <!-- Test row -->
               </tbody>
             </table>
           </div>

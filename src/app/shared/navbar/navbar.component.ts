@@ -1,7 +1,7 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {ProductService} from '../services/product.service';
+import {ProductService} from '../services/product-service/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CollectionService} from '../services/collection.service';
+import {CollectionService} from '../services/collection-service/collection.service';
 import {Collection} from '../models/collection';
 
 @Component({

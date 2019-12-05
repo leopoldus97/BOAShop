@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Collection} from '../../shared/models/collection';
-import {CollectionService} from '../../shared/services/collection.service';
-import {ProductService} from '../../shared/services/product.service';
+import {CollectionService} from '../../shared/services/collection-service/collection.service';
+import {ProductService} from '../../shared/services/product-service/product.service';
 import {Router} from "@angular/router";
 
 @Component({
