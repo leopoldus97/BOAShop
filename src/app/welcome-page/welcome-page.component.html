@@ -1,14 +1,14 @@
 <div class="mainContainer">
-  <div id="slideshow" style="text-align: center">
-    <div style="width: 100%; height: 456px; text-align: center">
+  <div id="slideshow" class="content-container">
+    <div style="width: 100%; height: 456px" class="content-container">
       <h1> Huge Ass Flashy Slideshow</h1>
     </div>
-    <div>
+    <div class="content-container">
       <p>THE ALL NEW "BOA X CHAMPION COLLECTION"</p>
-      <button routerLink="" style="background-color: greenyellow; text-decoration: none; height: 45px; width: 132px">Shop Now</button>
+      <button class="btn btn-dark" routerLink="/products" style="height: 45px; width: 132px; color: gold">Shop Now</button>
     </div>
   </div>
-  <div id="origin" style="text-align: center">
+  <div id="origin" class="content-container">
     <div>
       <h2>Origins</h2>
     </div>
@@ -22,28 +22,21 @@
       </p>
     </div>
   </div>
-  <div id="featuredCollection" style="text-align: center">
-    <div>
-      <h2>Featured Collection</h2>
-    </div>
-    <div>
-      <ul>
-        <li></li>
-      </ul>
-    </div>
+  <div id="featuredCollection" class="content-container">
+    <app-collection-list></app-collection-list>
   </div>
-  <div id="newsletter" style="text-align: center">
+  <div id="newsletter" class="content-container">
     <div>
       <h2>Subscribe to our newsletter</h2>
     </div>
     <div>
       <p>Subscribe to get the latest news on upcoming collection drops and sales</p>
     </div>
-    <form>
+    <form class="content-container">
       <div>
-        <input type="text" placeholder="Your email">
+        <input class="form-control mb-4" type="text" placeholder="Your email">
         <span>
-          <button>
+          <button class="btn btn-secondary">
             <span>Subscribe</span>
           </button>
         </span>
