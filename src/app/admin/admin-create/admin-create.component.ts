@@ -25,6 +25,19 @@ export class AdminCreateComponent implements OnInit {
 
   ngOnInit() {
     this.getCollections();
+    this.product = {
+      availableQuantity: 0,
+      collection: null,
+      description: '',
+      discountPrice: 0,
+      gender: '',
+      id: 0,
+      name: '',
+      pictures: [],
+      price: 0,
+      sizeQuantity: null,
+      type: ''
+    };
   }
 
   addCollection() {
@@ -56,6 +69,11 @@ export class AdminCreateComponent implements OnInit {
     } else {
       this.product.collection = null;
     }
+  }
+
+  save() {
+    this.setCollection();
+    this.proSer.createProduct(this.product).subscribe(() => this.router.navigateByUrl('/admin'));
   }
 
 }

@@ -9,6 +9,8 @@
         <option value="Unisex">Unisex</option>
       </select>
     </li>
+    <li>Price: <input [(ngModel)]="product.price"></li>
+    <li>Discounted price: <input [(ngModel)]="product.discountPrice" style="width:100px">(Leave at 0 for no discount)</li>
 
     <li *ngIf="togCol==1">
       <button (click)="removeCollection()"> Remove Collection</button>

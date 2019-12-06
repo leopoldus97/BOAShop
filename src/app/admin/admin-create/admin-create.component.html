@@ -10,10 +10,12 @@
         <option value="Unisex">Unisex</option>
       </select>
     </li>
+    <li>Price: <input [(ngModel)]="product.price" type="number"></li>
+    <li>Discounted price: <input [(ngModel)]="product.discountPrice" style="width:100px" type="number">(Leave at 0 for no discount)</li>
     <li *ngIf="togCol==1">
       <button (click)="removeCollection()"> Remove Collection</button>
       <select [(ngModel)]="product.collection.id">
-        <option value="0" disabled hidden style="color: red">Choose collection</option>
+        <option value="0" disabled hidden>Choose collection</option>
         <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
       </select>
     </li>
@@ -24,4 +26,8 @@
     <li>Description:</li>
     <li><textarea [(ngModel)]="product.description"></textarea></li>
   </ul>
+  <a routerLink="/admin">
+    <button>Cancel</button>
+  </a>
+  <button (click)="save()">Save</button>
 </div>

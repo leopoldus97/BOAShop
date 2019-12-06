@@ -19,8 +19,9 @@ export class ProductService {
   getProductByID(id: number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id).pipe(take(1));
   }
-  createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.url,  product).pipe(take(1));
+  createProduct(product: Product): Observable<any> {
+    // @ts-ignore
+    return this.http.post<Product>(this.url,  product, {responseType: 'text'}).pipe(take(1));
   }
   updateProduct(product: Product): Observable<any> {
     // @ts-ignore
