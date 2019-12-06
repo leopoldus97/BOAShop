@@ -4,6 +4,7 @@ import {ProductService} from '../../shared/services/product-service/product.serv
 import {CollectionService} from '../../shared/services/collection-service/collection.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Collection} from '../../shared/models/collection';
+import {Picture} from '../../shared/models/picture';
 
 @Component({
   selector: 'app-admin-create',
@@ -15,6 +16,7 @@ export class AdminCreateComponent implements OnInit {
   product: Product;
   togCol = 0;
   collections: Collection[];
+  defaultPicture: Picture[];
 
   constructor(
     private proSer: ProductService,
@@ -38,6 +40,10 @@ export class AdminCreateComponent implements OnInit {
       sizeQuantity: null,
       type: ''
     };
+    this.defaultPicture = [{
+      id: 0,
+      pictureLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHfYB0naXqmF8fXBIAzHgHf8poex_0dQCkIgtVNJKxcFQfnidB&s'
+    }];
   }
 
   addCollection() {
@@ -72,6 +78,7 @@ export class AdminCreateComponent implements OnInit {
   }
 
   save() {
+    this.product.pictures = this.defaultPicture;
     this.setCollection();
     this.proSer.createProduct(this.product).subscribe(() => this.router.navigateByUrl('/admin'));
   }

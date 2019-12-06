@@ -72,4 +72,8 @@ export class AdminDetailsComponent implements OnInit {
       this.product.collection = null;
     }
   }
+
+  deleteProduct() {
+    this.proSer.deleteProduct(this.product.id).subscribe(() => this.router.navigateByUrl('/admin'));
+  }
 }
