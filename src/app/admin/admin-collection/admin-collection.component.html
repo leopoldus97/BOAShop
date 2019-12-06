@@ -1,1 +1,13 @@
-<p>admin-collection works!</p>
+{{collection | json}}
+{{products | json}}
+<ul class="list-unstyled">
+  <li>Name: <input type="text" [(ngModel)]="collection.name"></li>
+</ul>
+<button (click)="addProduct()">Add Product</button>
+<ul class="list-unstyled">
+  <li *ngFor="let p of products">Select product:
+    <select [(ngModel)]="p.id">
+      <option *ngFor="let ap of allProducts" value="{{ap.id}}">{{ap.name}}</option>
+    </select>
+  </li>
+</ul>

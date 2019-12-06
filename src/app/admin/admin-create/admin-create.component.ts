@@ -56,11 +56,6 @@ export class AdminCreateComponent implements OnInit {
     this.togCol = 0;
   }
 
-  createProduct() {
-    this.setCollection();
-    this.proSer.createProduct(this.product).subscribe(() => this.router.navigateByUrl('/admin'));
-  }
-
   getCollections() {
     this.colSer.getCollections().subscribe(data => this.collections = data);
   }
