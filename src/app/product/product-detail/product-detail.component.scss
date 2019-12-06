@@ -74,9 +74,20 @@ background-color: whitesmoke;
   width: 100%;
   margin: 5px 0 5px;
 }
+#addToCart:focus{
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+}
+#addToCart:hover{
+  background-color: whitesmoke;
+}
 #buyIt{
   width: 100%;
   margin-bottom: 70px;
+}
+#buyIt:focus{
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
 }
 #quantityInputField{
   border: none;

@@ -24,7 +24,11 @@ export class CartService {
     this.currentCart = [toAdd];
     } else if (this.checkRepeatingProducts(toAdd)) {
       const p = this.currentCart.find(pr => pr.product.id === toAdd.product.id && pr.size === toAdd.size);
-      p.quantity += toAdd.quantity;
+      if (p.quantity + toAdd.quantity < 100) {
+        p.quantity += toAdd.quantity;
+      } else {
+        p.quantity = 99;
+      }
     } else {
      this.currentCart.push(toAdd);
     }
