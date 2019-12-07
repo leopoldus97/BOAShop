@@ -4,6 +4,7 @@ import {Product} from '../../shared/models/product';
 import {ProductService} from '../../shared/services/product-service/product.service';
 import {CollectionService} from '../../shared/services/collection-service/collection.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {forEachComment} from 'tslint';
 
 @Component({
   selector: 'app-admin-collection',
@@ -12,10 +13,23 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AdminCollectionComponent implements OnInit {
 
-  collection: Collection;
-  products: Product[];
+  collection: Collection  = {id: 0, name: '', products: []};
+  collProduct: Product = {
+    id: 0,
+    availableQuantity: 0,
+    collection: null,
+    description: '',
+    discountPrice: 0,
+    gender: '',
+    name: '',
+    pictures: [],
+    price: 0,
+    sizeQuantity: null,
+    type: ''
+  };
   allProducts: Product[];
-
+  displayProducts = false;
+  alreadyAdded: number[] = [];
   constructor(
     private proSer: ProductService,
     private colSer: CollectionService,
@@ -23,36 +37,24 @@ export class AdminCollectionComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.collection = {id: 0, name: '', products: []};
-    this.products = [];
     this.proSer.getProducts().subscribe(data => this.allProducts = data);
   }
 
-  addProduct() {
-    this.products.push({
-      availableQuantity: 0,
-      collection: null,
-      description: '',
-      discountPrice: 0,
-      gender: '',
-      id: 0,
-      name: '',
-      pictures: [],
-      price: 0,
-      sizeQuantity: null,
-      type: ''
-    });
+  showProducts() {
+    this.displayProducts = true;
   }
-
-  test() {
-    for (const p of this.products) {
-      this.proSer.getProductByID(p.id).subscribe(data => this.collection.products.push(data) );
+  transfer() {
+    const prod = this.alreadyAdded.some( productID => productID === this.collProduct.id );
+    if (prod === false) {
+      this.proSer.getProductByID(this.collProduct.id).subscribe(data => {
+        this.collection.products.push(data);
+        this.alreadyAdded.push(this.collProduct.id);
+      });
     }
   }
-
   save() {
-    debugger;
     this.colSer.createCollection(this.collection).subscribe(() => this.router.navigateByUrl('/admin'));
   }
+
 
 }

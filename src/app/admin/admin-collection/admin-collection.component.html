@@ -1,15 +1,15 @@
 {{collection | json}}
-{{products | json}}
+{{collProduct | json}}
 <ul class="list-unstyled">
   <li>Name: <input type="text" [(ngModel)]="collection.name"></li>
 </ul>
-<button (click)="addProduct()">Add Product</button>
+<button (click)="showProducts()">Add Product</button>
 <ul class="list-unstyled">
-  <li *ngFor="let p of products">Select product:
-    <select [(ngModel)]="p.id">
+  <li *ngIf="displayProducts">Select product:
+    <select [(ngModel)]="this.collProduct.id">
       <option *ngFor="let ap of allProducts" value="{{ap.id}}">{{ap.name}}</option>
     </select>
   </li>
 </ul>
-<button (click)="test()">Transfer</button>
+<button (click)="transfer()">Transfer</button>
 <button (click)="save()">Save</button>
