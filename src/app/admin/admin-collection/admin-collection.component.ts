@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Collection} from '../../shared/models/collection';
 import {Product} from '../../shared/models/product';
 import {ProductService} from '../../shared/services/product-service/product.service';
+import {CollectionService} from '../../shared/services/collection-service/collection.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-collection',
@@ -14,7 +16,11 @@ export class AdminCollectionComponent implements OnInit {
   products: Product[];
   allProducts: Product[];
 
-  constructor(private proSer: ProductService) { }
+  constructor(
+    private proSer: ProductService,
+    private colSer: CollectionService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.collection = {id: 0, name: '', products: []};
@@ -38,8 +44,15 @@ export class AdminCollectionComponent implements OnInit {
     });
   }
 
-  save() {
+  test() {
+    for (const p of this.products) {
+      this.proSer.getProductByID(p.id).subscribe(data => this.collection.products.push(data) );
+    }
+  }
 
+  save() {
+    debugger;
+    this.colSer.createCollection(this.collection).subscribe(() => this.router.navigateByUrl('/admin'));
   }
 
 }

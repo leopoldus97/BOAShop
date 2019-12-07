@@ -21,5 +21,9 @@ export class CollectionService {
   getCollectionByID(id): Observable<Collection> {
     return this.http.get<Collection>(this.url + '/' + id).pipe(take(1));
   }
+
+  createCollection(collection): Observable<any> {
+    return this.http.post(this.url, collection, {responseType: 'text'}).pipe(take(1));
+  }
 }
 
