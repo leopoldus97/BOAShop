@@ -3,7 +3,7 @@ import {ProductService} from '../services/product-service/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CollectionService} from '../services/collection-service/collection.service';
 import {Collection} from '../models/collection';
-import {CartService} from "../services/cart-service/cart.service";
+import {CartService} from '../services/cart-service/cart.service';
 
 @Component({
   selector: 'app-navbar',

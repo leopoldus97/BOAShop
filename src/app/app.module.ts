@@ -17,9 +17,10 @@ import { AdminCreateComponent } from './admin/admin-create/admin-create.componen
 import { AdminDetailsComponent } from './admin/admin-details/admin-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserCreateComponent } from './user/user-create/user-create.component';
-import {ErrorHandlerService} from "./shared/services/error-handler.service";
+import {ErrorHandlerService} from './shared/services/error-handler.service';
 import { AdminCollectionComponent } from './admin/admin-collection/admin-collection.component';
 import { CollectionListComponent } from './collection/collection-list/collection-list.component';
+import { ModalComponent } from './shared/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { CollectionListComponent } from './collection/collection-list/collection
     AdminCreateComponent,
     AdminDetailsComponent,
     AdminCollectionComponent,
-    CollectionListComponent
+    CollectionListComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,9 @@ import { CollectionListComponent } from './collection/collection-list/collection
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule
+  ],
+  entryComponents: [
+    ModalComponent
   ],
   providers: [ErrorHandlerService],
   bootstrap: [AppComponent]
