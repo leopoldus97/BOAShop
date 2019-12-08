@@ -12,7 +12,6 @@ import {CartService} from "../services/cart-service/cart.service";
 
 })
 export class NavbarComponent implements OnInit {
-  cartItems: number;
   searchItem: string;
   itemList: [string, string, string, string, string, string, string];
   collections: Collection[];
@@ -22,7 +21,6 @@ export class NavbarComponent implements OnInit {
               private cartService: CartService) {}
 
     ngOnInit() {
-    this.cartItems = 1;
     this.getCollections();
     this.searchItem = '';
     this.itemList = [

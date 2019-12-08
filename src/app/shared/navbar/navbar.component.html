@@ -65,7 +65,7 @@
       <li class="icon">
         <a routerLink="/cart">
         <i class="fas fa-shopping-cart" style="color: black">
-          <div class="basket-count">{{cartItems}}</div>
+          <div class="basket-count">{{this.cartService.currentCart.length}}</div>
         </i>
         </a>
       </li>

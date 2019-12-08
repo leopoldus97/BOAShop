@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
   removeProduct(product: ProductQuantity) {
+    product.quantity = 0;
     this.cartService.removeProduct(product);
   }
   formatSum(i: number): number {
