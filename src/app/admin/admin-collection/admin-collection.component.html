@@ -1,13 +1,14 @@
 {{collection | json}}
+<h6>make spaceeee</h6>
 {{collProduct | json}}
 <ul class="list-unstyled">
   <li>Name: <input type="text" [(ngModel)]="collection.name"></li>
 </ul>
-<button (click)="showProducts()">Add Product</button>
+<button (click)="showProducts()" id="addButton">Add Product</button>
 <ul class="list-unstyled">
   <li *ngIf="displayProducts">Select product:
-    <select [(ngModel)]="this.collProduct.id">
-      <option *ngFor="let ap of allProducts" value="{{ap.id}}">{{ap.name}}</option>
+    <select id="select" (change)="setID()">
+      <option  *ngFor="let ap of allProducts" value="{{ap.id}}">{{ap.name}}</option>
     </select>
   </li>
 </ul>
