@@ -26,12 +26,13 @@ export class ShoppingCartComponent implements OnInit {
     if (product.quantity > 99) {
       product.quantity = 99;
       product.sum = this.formatSum(product.quantity * product.product.price);
-    } else {
+    } else  {
       product.sum = this.formatSum(product.quantity * product.product.price);
     }
+    this.cartService.calculateTotal();
   }
   removeProduct(product: ProductQuantity) {
-    product.quantity = 0;
+    product.quantity = -100;
     this.cartService.removeProduct(product);
   }
   formatSum(i: number): number {
