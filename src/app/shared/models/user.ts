@@ -7,4 +7,5 @@ export interface User {
   isAdmin: boolean;
   address: Address;
   orders: Order[];
+  token?: string;
 }

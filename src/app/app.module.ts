@@ -7,7 +7,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -21,6 +21,9 @@ import {ErrorHandlerService} from './shared/services/error-handler.service';
 import { AdminCollectionComponent } from './admin/admin-collection/admin-collection.component';
 import { CollectionListComponent } from './collection/collection-list/collection-list.component';
 import { ModalComponent } from './shared/modal/modal.component';
+import { AccountPageComponent } from './user/account-page/account-page.component';
+import {ErrorInterceptor} from "./shared/helpers/error.interceptor";
+import {JwtInterceptor} from "./shared/helpers/jwt.interceptor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,19 +42,25 @@ import { ModalComponent } from './shared/modal/modal.component';
     AdminDetailsComponent,
     AdminCollectionComponent,
     CollectionListComponent,
-    ModalComponent
+    ModalComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     ModalComponent
   ],
-  providers: [ErrorHandlerService],
+  providers: [
+    ErrorHandlerService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,8 @@ import {AdminCreateComponent} from './admin/admin-create/admin-create.component'
 import {UserCreateComponent} from './user/user-create/user-create.component';
 import {AdminCollectionComponent} from './admin/admin-collection/admin-collection.component';
 import {CollectionListComponent} from './collection/collection-list/collection-list.component';
+import {AccountPageComponent} from './user/account-page/account-page.component';
+import {AuthGuard} from './shared/helpers/auth.guard';
 
 
 const routes: Routes = [
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'productdetail/:id', component: ProductDetailComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'login', component: LoginPageComponent},
-
+  { path: 'account', component: AccountPageComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminPageComponent,
     children: [
       { path: '', component: AdminListComponent},
@@ -31,7 +33,6 @@ const routes: Routes = [
       { path: 'collection', component: AdminCollectionComponent}
     ]
   },
-  { path: 'login', component: LoginPageComponent},
   { path: 'create-account', component: UserCreateComponent }
 ];
 
