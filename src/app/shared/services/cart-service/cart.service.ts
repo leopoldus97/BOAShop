@@ -7,6 +7,7 @@ import {ProductQuantity} from '../../models/productQuantity';
 })
 export class CartService {
   currentCart: Array<ProductQuantity> = [];
+  currentCartPrice = 0;
   id = 1;
   constructor() { }
   getProducts(): ProductQuantity[] {
@@ -18,20 +19,25 @@ export class CartService {
   }
   removeProduct(toDelete: ProductQuantity) {
     this.currentCart = this.currentCart.filter( p => p !== toDelete);
+    this.calculateTotal();
   }
   addProduct(toAdd: ProductQuantity) {
     if (this.currentCart === null) {
-    this.currentCart = [toAdd];
+      this.currentCart = [toAdd];
     } else if (this.checkRepeatingProducts(toAdd)) {
       const p = this.currentCart.find(pr => pr.product.id === toAdd.product.id && pr.size === toAdd.size);
       if (p.quantity + toAdd.quantity < 100) {
         p.quantity += toAdd.quantity;
+        p.sum = (p.quantity * p.product.price);
       } else {
         p.quantity = 99;
       }
     } else {
-     this.currentCart.push(toAdd);
+      toAdd.sum = (toAdd.quantity * toAdd.product.price);
+      this.currentCartPrice += toAdd.sum;
+      this.currentCart.push(toAdd);
     }
+    this.calculateTotal();
   }
   updateProducts(updated: ProductQuantity[]) {
     this.currentCart = updated;
@@ -45,6 +51,12 @@ export class CartService {
       return true;
     } else {
       return false;
+    }
+  }
+  calculateTotal() {
+    this.currentCartPrice = 0;
+    for (const p of this.currentCart) {
+      this.currentCartPrice += p.sum;
     }
   }
 
