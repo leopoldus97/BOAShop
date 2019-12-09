@@ -28,13 +28,10 @@ export class CartService {
       const p = this.currentCart.find(pr => pr.product.id === toAdd.product.id && pr.size === toAdd.size);
       if (p.quantity + toAdd.quantity < 100) {
         p.quantity += toAdd.quantity;
-        p.sum = (p.quantity * p.product.price);
       } else {
         p.quantity = 99;
       }
     } else {
-      toAdd.sum = (toAdd.quantity * toAdd.product.price);
-      this.currentCartPrice += toAdd.sum;
       this.currentCart.push(toAdd);
     }
     this.calculateTotal();
@@ -59,5 +56,4 @@ export class CartService {
       this.currentCartPrice += p.sum;
     }
   }
-
 }

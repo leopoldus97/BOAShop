@@ -10,7 +10,10 @@ import {ProductQuantity} from '../shared/models/productQuantity';
 })
 export class ShoppingCartComponent implements OnInit {
   currentProducts: ProductQuantity[];
-
+  subTotal = 0;
+  shippingAndHandling = 10;
+  tax = 0;
+  total = 0;
   constructor(private cartService: CartService) {
   }
 
@@ -37,5 +40,13 @@ export class ShoppingCartComponent implements OnInit {
   }
   formatSum(i: number): number {
     return Math.round(i * 100) / 100;
+  }
+  calculateTotal() {
+    this.total = this.formatSum(this.cartService.currentCartPrice + this.shippingAndHandling + this.tax);
+    return this.total;
+  }
+  calculateSubTotal() {
+   this.subTotal = this.formatSum(this.cartService.currentCartPrice);
+   return this.subTotal;
   }
 }

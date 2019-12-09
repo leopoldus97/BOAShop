@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
     if (this.productQuantity.quantity > 0 && this.productQuantity.quantity <= 100) {
       this.productQuantity.id = this.cartService.availableID();
       this.productQuantity.product = this.product;
-      this.productQuantity.sum = (this.productQuantity.quantity * this.product.price);
+      this.productQuantity.sum = this.formatSum(this.productQuantity.quantity * this.product.price);
       this.cartService.addProduct(this.productQuantity);
       this.setDefault(this.productQuantity.size);
     } else {
@@ -50,5 +50,8 @@ export class ProductDetailComponent implements OnInit {
   }
   openModal() {
     this.modalRef = this.modalService.show(ModalComponent);
+  }
+  formatSum(i: number): number {
+    return Math.round(i * 100) / 100;
   }
 }
