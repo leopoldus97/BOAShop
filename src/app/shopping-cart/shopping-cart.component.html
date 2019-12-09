@@ -1,4 +1,4 @@
-<div class="px-4 px-lg-0">
+<div *ngIf="currentProducts.length > 0" class="px-4 px-lg-0">
 
   <div class="pb-5">
     <div class="container">
@@ -26,7 +26,7 @@
               </thead>
               <tbody [(ngModel)]="currentProducts" *ngFor="let currentProduct of currentProducts " >
               <!-- Test row -->
-              <tr *ngIf="currentProduct.quantity != -100 || currentProduct.quantity == null">
+              <tr>
                 <th scope="row">
                   <div class="p-2">
                     <img  src="{{currentProduct.product.pictures[0].pictureLink}}" alt="" width="70" class="img-fluid rounded shadow-sm">
@@ -65,7 +65,7 @@
             <textarea name="" cols="30" rows="2" class="form-control"></textarea>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div  class="col-lg-6">
           <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
           <div class="p-4">
             <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
@@ -83,4 +83,9 @@
 
     </div>
   </div>
+</div>
+<div *ngIf="currentProducts.length === 0" id="noProductsContainer">
+  <p style=" font-size:30px">Your cart is empty.</p>
+  <br>
+  <button type="button" class="btn btn-light" id="backButton" (click)="this.productService.setFilter('','Available Products')" routerLink="/products">Back to the store</button>
 </div>

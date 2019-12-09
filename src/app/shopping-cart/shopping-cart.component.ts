@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from '../shared/services/cart-service/cart.service';
 import {Product} from '../shared/models/product';
 import {ProductQuantity} from '../shared/models/productQuantity';
+import {ProductService} from '../shared/services/product-service/product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,7 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   shippingAndHandling = 10;
   tax = 0;
   total = 0;
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private productService: ProductService) {
   }
 
   ngOnInit() {
@@ -35,8 +36,8 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.calculateTotal();
   }
   removeProduct(product: ProductQuantity) {
-    product.quantity = -100;
     this.cartService.removeProduct(product);
+    this.currentProducts = this.currentProducts.filter( p => p !== product);
   }
   formatSum(i: number): number {
     return Math.round(i * 100) / 100;
