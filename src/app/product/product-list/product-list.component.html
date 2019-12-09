@@ -24,15 +24,16 @@
     </ul>
   </div>
 </div>
-<div *ngIf="!products && !productsInStock()">
+<div *ngIf="!products && !noProductsAvailable">
   <div class="d-flex justify-content-center">
     <div class="spinner-border loader" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
 </div>
-<div *ngIf="!products && productsInStock()" id="noProductsContainer">
+<div *ngIf="!products && noProductsAvailable" id="noProductsContainer">
   <p style=" font-size:30px">Currently no products in this category.</p>
   <br>
   <button type="button" class="btn btn-light" id="backButton" (click)="this.productService.setFilter('','Available Products')" routerLink="/products">Back to the store</button>
 </div>
+

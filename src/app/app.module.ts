@@ -17,13 +17,12 @@ import { AdminCreateComponent } from './admin/admin-create/admin-create.componen
 import { AdminDetailsComponent } from './admin/admin-details/admin-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserCreateComponent } from './user/user-create/user-create.component';
-import {ErrorHandlerService} from './shared/services/error-handler.service';
 import { AdminCollectionComponent } from './admin/admin-collection/admin-collection.component';
 import { CollectionListComponent } from './collection/collection-list/collection-list.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { AccountPageComponent } from './user/account-page/account-page.component';
-import {ErrorInterceptor} from "./shared/helpers/error.interceptor";
-import {JwtInterceptor} from "./shared/helpers/jwt.interceptor";
+import {ErrorInterceptor} from './shared/helpers/error.interceptor';
+import {JwtInterceptor} from './shared/helpers/jwt.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +56,6 @@ import {JwtInterceptor} from "./shared/helpers/jwt.interceptor";
     ModalComponent
   ],
   providers: [
-    ErrorHandlerService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
