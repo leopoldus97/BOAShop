@@ -1,32 +1,48 @@
 <div *ngIf="product">
-  <ul class="list-unstyled">
-    <li>Name: <input [(ngModel)]="product.name"></li>
-    <li>Type: <input [(ngModel)]="product.type"></li>
-    <li>Gender:
-      <select [(ngModel)]="product.gender">
-        <option value="Men">Male</option>
-        <option value="Women">Female</option>
-        <option value="Unisex">Unisex</option>
-      </select>
-    </li>
-    <li>Price: <input [(ngModel)]="product.price"></li>
-    <li>Discounted price: <input [(ngModel)]="product.discountPrice" style="width:100px">(Leave at 0 for no discount)</li>
+  <div class="container">
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Name: </div>
+      <div class="col"><input [(ngModel)]="product.name"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Type: </div>
+      <div class="col"><input [(ngModel)]="product.type"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Gender: </div>
+      <div class="col">
+        <select [(ngModel)]="product.gender" style="height: 30px">
+          <option value="" disabled hidden>Select gender</option>
+          <option value="Men">Male</option>
+          <option value="Women">Female</option>
+          <option value="Unisex">Unisex</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Price: </div>
+      <div class="col"><input [(ngModel)]="product.price" type="number" style="width:200px"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Discounted price: </div>
+      <div class="col"><input [(ngModel)]="product.discountPrice"type="number" style="width:200px">(Leave at 0 for no discount)</div>
+    </div>
+    <div *ngIf="togCol==1" class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2"><button (click)="removeCollection()"> Remove Collection</button></div>
+      <div class="col">
+        <select [(ngModel)]="product.collection.id" style="height: 30px">
+          <option value="0" disabled hidden>Choose collection</option>
+          <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
+        </select>
+      </div>
+    </div>
 
-    <li *ngIf="togCol==1">
-      <button (click)="removeCollection()"> Remove Collection</button>
-      <select [(ngModel)]="product.collection.id">
-        <option value="0" disabled hidden style="color: red">Choose collection</option>
-        <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
-      </select>
-    </li>
-
-    <li *ngIf="togCol==0">
-      <button (click)="addCollection()"> Add Collection</button>No collection
-    </li>
-    <li>Description:</li>
-    <li><textarea [(ngModel)]="product.description"></textarea></li>
-
-  </ul>
+    <div *ngIf="togCol==0" class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2"><button (click)="addCollection()"> Add Collection</button></div>
+      <div class="col">No collection</div>
+    </div>
+    <div>Description:</div>
+    <div><textarea [(ngModel)]="product.description"></textarea></div>
   <div>
     <button (click)="deleteProduct()" style="color:red">Delete Product</button>
     <button (click)="getProductByID()">Reset</button>

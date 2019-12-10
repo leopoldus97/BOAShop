@@ -26,6 +26,11 @@ export class AdminCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    document.getElementById('btn-all-products').setAttribute('style', '');
+    document.getElementById('btn-add-product').setAttribute('style',
+      'background-color:black; color: white; width:200px');
+    document.getElementById('btn-new-collection').setAttribute('style', '');
+    document.getElementById('btn-collection-list').setAttribute('style', '');
     this.getCollections();
     this.product = {
       availableQuantity: 0,

@@ -25,6 +25,10 @@ export class AdminDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    document.getElementById('btn-all-products').setAttribute('style', '');
+    document.getElementById('btn-add-product').setAttribute('style', '');
+    document.getElementById('btn-new-collection').setAttribute('style', '');
+    document.getElementById('btn-collection-list').setAttribute('style', '');
     this.getProductByID();
     this.getCollections();
   }

@@ -15,6 +15,11 @@ export class AdminListComponent implements OnInit {
 
   ngOnInit() {
     this.service.getProducts().subscribe(listOfProducts => this.allProducts = listOfProducts);
+    document.getElementById('btn-all-products').setAttribute('style',
+      'background-color:#000000; color: white; width:200px');
+    document.getElementById('btn-add-product').setAttribute('style', '');
+    document.getElementById('btn-new-collection').setAttribute('style', '');
+    document.getElementById('btn-collection-list').setAttribute('style', '');
   }
 
 }

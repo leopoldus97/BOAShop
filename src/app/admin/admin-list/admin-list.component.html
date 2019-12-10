@@ -1,10 +1,22 @@
-<ul class="list-unstyled">
-  <li *ngFor="let product of allProducts">
-    <a routerLink="/admin/details/{{product.id}}">
-      <div>{{product.name}}</div>
-    </a>
-  </li>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of allProducts">
+      <th scope="row" routerLink="/admin/details/{{p.id}}">{{p.id}}</th>
+      <td routerLink="/admin/details/{{p.id}}">{{p.name}}</td>
+      <td routerLink="/admin/details/{{p.id}}">{{p.type}}</td>
+      <td routerLink="/admin/details/{{p.id}}">{{p.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <div *ngIf="!allProducts">
   <div class="d-flex justify-content-center">
     <div class="spinner-border loader" role="status">
