@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   name: string;
   errorMessage = '';
+  currentPage = 1;
   noProductsAvailable = false;
   constructor(private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute) {
     activeRoute.params.subscribe(val => {
@@ -34,6 +35,11 @@ export class ProductListComponent implements OnInit {
             this.products = null;
           },
         );
+    }
+    changePage(page: number) {
+    this.currentPage += page;
+    this.productService.setPaging(this.currentPage);
+    this.getProducts2();
     }
   }
 

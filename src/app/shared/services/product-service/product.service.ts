@@ -11,6 +11,9 @@ import {take} from 'rxjs/operators';
 export class ProductService {
   url = environment.apiUrl + 'products';
   filter: string;
+  paging: string;
+  currentPage: number;
+  itemsPrPage = 12;
   properType = 'Available Products';
   constructor(private http: HttpClient) { }
   getProducts(): Observable<Product[]> {
@@ -33,5 +36,15 @@ export class ProductService {
   setFilter(filter: string, properType: string) {
     this.filter = filter;
     this.properType = properType;
+  }
+  setPaging(currentPage: number) {
+    this.currentPage = currentPage;
+    if (this.filter !== undefined && this.filter.length > 0) {
+      this.paging = '&ItemsPrPage=' + this.itemsPrPage + '&CurrentPage=' + this.currentPage;
+      this.filter = this.paging;
+    } else {
+      this.paging = 'ItemsPrPage=12&CurrentPage=' + this.currentPage;
+      this.filter = this.filter + this.paging;
+    }
   }
 }

@@ -6,7 +6,7 @@
         <a routerLink="/productdetail/{{product.id}}">
 
           <div class="view view-cascade overlay" style="border-radius: 5%">
-            <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" >
+            <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" style="height: 70%">
             <a>
               <div class="mask rgba-yellow-light"></div>
             </a>
@@ -23,6 +23,28 @@
       </li>
     </ul>
   </div>
+  <!-- Paging -->
+  <div style="width: fit-content; margin: auto">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li class="page-item ">
+        <a class="page-link" (click)="changePage(-1)" *ngIf="currentPage !== 1" style="color: black; font-weight:bold">Previous</a>
+        <a class="page-link disabled" *ngIf="currentPage === 1" style="color: gray">Previous</a>
+      </li>
+      <li class="page-item disabled">
+      <span class="page-link">
+        {{currentPage}}
+        <span class="sr-only">(current)</span>
+      </span>
+      </li>
+      <li class="page-item">
+        <a class="page-link disabled" *ngIf="products.length < productService.itemsPrPage" style="color: gray">Next</a>
+        <a class="page-link" (click)="changePage(1)" *ngIf="products.length === productService.itemsPrPage" style="color: black; font-weight:bold">Next</a>
+      </li>
+    </ul>
+</nav>
+  </div>
+  <!-- Paging -->
 </div>
 <div *ngIf="!products && !noProductsAvailable">
   <div class="d-flex justify-content-center">

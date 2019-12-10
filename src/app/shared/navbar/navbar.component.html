@@ -25,6 +25,7 @@
         <button class="btn btn-outline-light dropdown-toggle" (click)="setFilter('gender=women','/Women', 'Women')">
          WOMEN<span class="caret"></span></button>
         <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item" (click)="setFilter('gender=women&type=T-Shirts','/Women-T-Shirts', 'T-Shirts')">T-Shirts</a>
           <a class="dropdown-item" (click)="setFilter('gender=women&type=Tops','/Women-Tops', 'Tops')">Tops</a>
           <a class="dropdown-item" (click)="setFilter('gender=women&type=Dresses And Skirts','/Women-Dresses-Skirts','Dresses & Skirts')">Dresses & Skirts</a>
           <a class="dropdown-item" (click)="setFilter('gender=women&type=Hoodies And Sweatshirts','/Women-Hoodies-Sweatshirts','Hoodies & Sweatshirts')">Hoodies & Sweatshirts</a>
