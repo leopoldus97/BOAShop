@@ -54,4 +54,8 @@ export class ProductDetailComponent implements OnInit {
   formatSum(i: number): number {
     return Math.round(i * 100) / 100;
   }
+  setFilter(specification: string, routeTail: string, properType: string) {
+    this.service.setFilter(specification, properType);
+    this.router.navigateByUrl('products' + routeTail);
+  }
 }

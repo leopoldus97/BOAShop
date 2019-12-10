@@ -21,7 +21,7 @@
         <div>
 
           <div>
-            <h1 *ngIf="product.collection" class="textCenter">"{{product.collection.name}}"</h1>
+            <h1 *ngIf="product.collection" class="textCenter">"<a (click)="setFilter('Collection=' + product.collection.name,'/'+product.collection.name.trim(),product.collection.name+' Collection')">{{product.collection.name}}</a>"</h1>
             <h1 class="textCenter">{{product.name}}</h1><br>
             <div>
               <h3 class="textCenter"><b>${{product.price}}</b></h3>
