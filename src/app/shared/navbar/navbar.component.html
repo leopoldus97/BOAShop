@@ -52,10 +52,15 @@
         <button class="btn btn-outline-light">BLOG</button>
       </li>
 
-      <li class="icon" id="profileIcon">
+      <li class="nav-item dropdown icon" id="profileIcon" style="padding-left: 0.5rem">
         <a routerLink="/login">
           <i class="fas fa-user" style="color: black"></i>
         </a>
+        <div *ngIf="currentUser" class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a *ngIf="!currentUser.isAdmin" class="dropdown-item" routerLink="/account">Account</a>
+          <a *ngIf="currentUser.isAdmin" class="dropdown-item" routerLink="/admin">Admin</a>
+          <a class="dropdown-item" (click)="logout()">Log out</a>
+        </div>
       </li>
       <li  class="icon">
         <form action="">

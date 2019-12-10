@@ -4,6 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CollectionService} from '../services/collection-service/collection.service';
 import {Collection} from '../models/collection';
 import {CartService} from '../services/cart-service/cart.service';
+import {AuthenticationService} from '../services/authentication-service/authentication.service';
+import {User} from "../models/user";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-navbar',
@@ -15,10 +18,12 @@ export class NavbarComponent implements OnInit {
   searchItem: string;
   itemList: [string, string, string, string, string, string, string];
   collections: Collection[];
+  currentUser: User;
   constructor(private productService: ProductService,
               private router: Router,
               private collectionService: CollectionService,
-              private cartService: CartService) {}
+              private cartService: CartService,
+              private authServ: AuthenticationService) {}
 
     ngOnInit() {
     this.getCollections();
@@ -32,6 +37,7 @@ export class NavbarComponent implements OnInit {
       'Sportswear',
       'Swimwear'
     ];
+    this.authServ.currentUser.subscribe(u => this.currentUser = u);
   }
   setFilter(specification: string, routeTail: string, properType: string) {
     this.productService.setFilter(specification, properType);
@@ -52,5 +58,9 @@ export class NavbarComponent implements OnInit {
       this.productService.setFilter('', 'Available Products');
       this.router.navigateByUrl('/products');
     }
+  }
+  logout() {
+    this.authServ.logout();
+    this.router.navigateByUrl('/login');
   }
 }
