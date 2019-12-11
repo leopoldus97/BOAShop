@@ -5,14 +5,17 @@
 
   <div class="row no-gutters">
     <!-- Pictures row -->
-    <div class="col-12 col-sm-6 col-md-8">
+    <div class="col-12 col-sm-6 col-md-8" style=" padding-right: 10%">
 
         <ul style="list-style: none;">
-          <li *ngFor="let picture of product.pictures" style="padding-bottom: 20px;">
-            <img class="pictures" src="{{picture.pictureLink}}">
+          <li>
+            <mdb-carousel  class="carousel slide carousel-fade customCarousel" [animation]="'fade'">
+              <mdb-carousel-item *ngFor="let picture of product.pictures" >
+                <img class="d-block w-100" src="{{picture.pictureLink}}" alt="{{picture.id}} slide">
+              </mdb-carousel-item>
+            </mdb-carousel>
           </li>
         </ul>
-
     </div>
     <!-- Pictures row -->
     <!-- Data row -->

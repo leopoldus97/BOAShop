@@ -2,7 +2,19 @@
   <div id="slideshow" class="content-container">
     <div style="width: 100%; height: 456px" class="content-container">
       <h1> Huge Ass Flashy Slideshow</h1>
-    </div>
+
+      <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+        <mdb-carousel-item>
+          <img class="d-block w-100"  src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
+        </mdb-carousel-item>
+      </mdb-carousel>
+
     <div class="content-container">
       <p>THE ALL NEW "BOA X CHAMPION COLLECTION"</p>
       <button class="btn btn-dark" routerLink="/products" style="height: 45px; width: 132px; color: gold">Shop Now</button>
