@@ -15,10 +15,12 @@ import {CollectionListComponent} from './collection/collection-list/collection-l
 import {AccountPageComponent} from './user/account-page/account-page.component';
 import {AuthGuard} from './shared/helpers/auth.guard';
 import {AdminCollectionListComponent} from './admin/admin-collection-list/admin-collection-list.component';
+import {BlogComponent} from './blog/blog.component';
 
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent },
+  { path: 'blog', component: BlogComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'collections', component: CollectionListComponent },
   {path: 'products/:name', component: ProductListComponent},
