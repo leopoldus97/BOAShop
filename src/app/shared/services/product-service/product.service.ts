@@ -43,10 +43,19 @@ export class ProductService {
       this.paging = '&ItemsPrPage=' + this.itemsPrPage + '&CurrentPage=' + this.currentPage;
       this.filter = this.paging;
     } else {
-      this.paging = 'ItemsPrPage=12&CurrentPage=' + this.currentPage;
+      this.paging = 'ItemsPrPage=' + this.itemsPrPage + '&CurrentPage=' + this.currentPage;
       this.filter = this.filter + this.paging;
     }
   }
+  resetFilterToDefault() {
+    this.itemsPrPage = 12;
+    this.setPaging(1);
+  }
+  displayAllProducts() {
+    this.itemsPrPage = 100;
+    this.setPaging(1);
+  }
+
   getCurrentPage() {
     return this.currentPage;
   }

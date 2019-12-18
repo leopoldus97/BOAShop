@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
     this.authServ.currentUser.subscribe(u => this.currentUser = u);
   }
   setFilter(specification: string, routeTail: string, properType: string) {
+    this.productService.resetFilterToDefault();
     this.productService.setFilter(specification, properType);
     this.router.navigateByUrl('products' + routeTail);
   }

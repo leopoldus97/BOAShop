@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
     });
   }
   ngOnInit() {
-      this.getProducts2();
+    this.getProducts2();
   }
   getProducts2() {
     this.errorMessage = '';
