@@ -9,7 +9,7 @@ import {Product} from '../../shared/models/product';
 })
 export class AdminListComponent implements OnInit {
 
-  allProducts: Product[];
+  allProducts: Product[] = [];
   idSort = '';
   nameSort = '';
   typeSort = '';
@@ -84,7 +84,7 @@ export class AdminListComponent implements OnInit {
   }
 
   getProducts() {
-    this.service.getProducts().subscribe(listOfProducts => this.allProducts = listOfProducts);
+    this.service.getProducts().subscribe(listOfProducts => this.allProducts = listOfProducts, () => this.allProducts = null);
   }
 
   changePage(page: number) {
