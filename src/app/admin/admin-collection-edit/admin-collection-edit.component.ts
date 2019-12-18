@@ -30,14 +30,19 @@ export class AdminCollectionEditComponent implements OnInit {
     document.getElementById('btn-new-collection').setAttribute('style', '');
     document.getElementById('btn-collection-list').setAttribute('style', '');
     this.initProduct();
-    this.proSer.itemsPrPage = 1000;
     this.proSer.getProducts().subscribe(data => this.allProducts = data);
     this.getCollectionByID();
   }
 
   getCollectionByID() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.colSer.getCollectionByID(id).subscribe(data => this.collection = data);
+    this.colSer.getCollectionByID(id).subscribe(data => { this.collection = data; this.updateAlreadyAdded(); } );
+  }
+
+  updateAlreadyAdded() {
+    for (const p of this.collection.products) {
+      this.alreadyAdded.push(p.id);
+    }
   }
 
   showProducts() {
@@ -54,7 +59,7 @@ export class AdminCollectionEditComponent implements OnInit {
     }
   }
   save() {
-    this.colSer.createCollection(this.collection).subscribe(() => this.router.navigateByUrl('/admin/collection-list'));
+    this.colSer.updateCollection(this.collection).subscribe(() => this.router.navigateByUrl('/admin/collection-list'));
   }
 
   setID() {

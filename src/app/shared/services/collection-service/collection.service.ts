@@ -25,5 +25,9 @@ export class CollectionService {
   createCollection(collection): Observable<any> {
     return this.http.post(this.url, collection, {responseType: 'text'}).pipe(take(1));
   }
+
+  updateCollection(collection): Observable<any> {
+    return this.http.put(this.url + '/' + collection.id, collection, {responseType: 'text'}).pipe(take(1));
+  }
 }
 
