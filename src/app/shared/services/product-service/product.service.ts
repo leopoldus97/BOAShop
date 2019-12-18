@@ -47,4 +47,7 @@ export class ProductService {
       this.filter = this.filter + this.paging;
     }
   }
+  getCurrentPage() {
+    return this.currentPage;
+  }
 }

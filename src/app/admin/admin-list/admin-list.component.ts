@@ -14,6 +14,7 @@ export class AdminListComponent implements OnInit {
   nameSort = '';
   typeSort = '';
   priceSort = '';
+  currentPage = 1;
 
   constructor(private service: ProductService) { }
 
@@ -84,6 +85,12 @@ export class AdminListComponent implements OnInit {
 
   getProducts() {
     this.service.getProducts().subscribe(listOfProducts => this.allProducts = listOfProducts);
+  }
+
+  changePage(page: number) {
+    this.currentPage += page;
+    this.service.setPaging(this.currentPage);
+    this.getProducts();
   }
 
 }

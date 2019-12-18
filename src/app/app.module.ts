@@ -25,6 +25,7 @@ import {ErrorInterceptor} from './shared/helpers/error.interceptor';
 import {JwtInterceptor} from './shared/helpers/jwt.interceptor';
 import { AdminCollectionListComponent } from './admin/admin-collection-list/admin-collection-list.component';
 import { BlogComponent } from './blog/blog.component';
+import { AdminCollectionEditComponent } from './admin/admin-collection-edit/admin-collection-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { BlogComponent } from './blog/blog.component';
     ModalComponent,
     AccountPageComponent,
     AdminCollectionListComponent,
-    BlogComponent
+    BlogComponent,
+    AdminCollectionEditComponent
   ],
   imports: [
     BrowserModule,

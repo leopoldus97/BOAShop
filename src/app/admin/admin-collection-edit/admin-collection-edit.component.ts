@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {Collection} from '../../shared/models/collection';
-import {Product} from '../../shared/models/product';
-import {ProductService} from '../../shared/services/product-service/product.service';
 import {CollectionService} from '../../shared/services/collection-service/collection.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {forEachComment} from 'tslint';
+import {ProductService} from '../../shared/services/product-service/product.service';
+import {Product} from '../../shared/models/product';
+import {Collection} from '../../shared/models/collection';
 
 @Component({
-  selector: 'app-admin-collection',
-  templateUrl: './admin-collection.component.html',
-  styleUrls: ['./admin-collection.component.scss']
+  selector: 'app-admin-collection-edit',
+  templateUrl: './admin-collection-edit.component.html',
+  styleUrls: ['./admin-collection-edit.component.scss']
 })
-export class AdminCollectionComponent implements OnInit {
+export class AdminCollectionEditComponent implements OnInit {
 
-  collection: Collection  = {id: 0, name: '', products: []};
+  collection: Collection;
   collProduct: Product;
   allProducts: Product[];
   displayProducts = false;
@@ -21,17 +20,24 @@ export class AdminCollectionComponent implements OnInit {
   constructor(
     private proSer: ProductService,
     private colSer: CollectionService,
-    private router: Router
-    ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     document.getElementById('btn-all-products').setAttribute('style', '');
     document.getElementById('btn-add-product').setAttribute('style', '');
-    document.getElementById('btn-new-collection').setAttribute('style',
-      'background-color: black; color: white; width:200px');
+    document.getElementById('btn-new-collection').setAttribute('style', '');
     document.getElementById('btn-collection-list').setAttribute('style', '');
     this.initProduct();
+    this.proSer.itemsPrPage = 1000;
     this.proSer.getProducts().subscribe(data => this.allProducts = data);
+    this.getCollectionByID();
+  }
+
+  getCollectionByID() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.colSer.getCollectionByID(id).subscribe(data => this.collection = data);
   }
 
   showProducts() {

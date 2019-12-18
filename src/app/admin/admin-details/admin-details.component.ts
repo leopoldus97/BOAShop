@@ -21,7 +21,6 @@ export class AdminDetailsComponent implements OnInit {
     private colSer: CollectionService,
     private route: ActivatedRoute,
     private router: Router
-    // private fb: FormBuilder
   ) { }
 
   ngOnInit() {

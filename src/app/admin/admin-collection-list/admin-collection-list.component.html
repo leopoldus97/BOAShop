@@ -7,10 +7,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let c of allCollections">
-    <th scope="row">{{c.id}}</th>
-    <td>{{c.name}}</td>
-    <td>{{c.products.length}}</td>
+  <tr *ngFor="let c of allCollections" class="table-row">
+    <th scope="row" routerLink="/admin/collection/{{c.id}}">{{c.id}}</th>
+    <td routerLink="/admin/collection/{{c.id}}">{{c.name}}</td>
+    <td routerLink="/admin/collection/{{c.id}}">{{c.products.length}}</td>
   </tr>
   </tbody>
 </table>

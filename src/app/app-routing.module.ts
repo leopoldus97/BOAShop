@@ -16,6 +16,7 @@ import {AccountPageComponent} from './user/account-page/account-page.component';
 import {AuthGuard} from './shared/helpers/auth.guard';
 import {AdminCollectionListComponent} from './admin/admin-collection-list/admin-collection-list.component';
 import {BlogComponent} from './blog/blog.component';
+import {AdminCollectionEditComponent} from './admin/admin-collection-edit/admin-collection-edit.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
       { path: 'details/:id', component: AdminDetailsComponent},
       { path: 'create', component: AdminCreateComponent},
       { path: 'collection', component: AdminCollectionComponent},
-      { path: 'collection-list', component: AdminCollectionListComponent}
+      { path: 'collection-list', component: AdminCollectionListComponent},
+      { path: 'collection/:id', component: AdminCollectionEditComponent}
     ]
   },
   { path: 'create-account', component: UserCreateComponent }
