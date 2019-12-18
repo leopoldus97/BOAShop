@@ -29,5 +29,9 @@ export class CollectionService {
   updateCollection(collection): Observable<any> {
     return this.http.put(this.url + '/' + collection.id, collection, {responseType: 'text'}).pipe(take(1));
   }
+
+  deleteCollection(id): Observable<any> {
+    return this.http.delete(this.url + '/' + id, {responseType: 'text'}).pipe(take(1));
+  }
 }
 

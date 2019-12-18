@@ -103,4 +103,8 @@ export class AdminCollectionEditComponent implements OnInit {
     this.alreadyAdded = this.alreadyAdded.filter(num => num !== id);
   }
 
+  delete() {
+    this.colSer.deleteCollection(this.collection.id).subscribe(() => this.router.navigateByUrl('/admin/collection-list'));
+  }
+
 }
