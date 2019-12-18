@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'login', component: LoginPageComponent},
   { path: 'account', component: AccountPageComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminPageComponent,
+  { path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: AdminListComponent},
       { path: 'details/:id', component: AdminDetailsComponent},
