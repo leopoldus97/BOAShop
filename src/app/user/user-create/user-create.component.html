@@ -1,40 +1,25 @@
 <div class="container">
-  <form>
-    <!--<div class="inputWrapper">
-      <input class="input" type="text" name="firstname" value="" placeholder="First Name">
-      <label class="label">First Name</label>
-      <span class="info"><i class="fa fa-info-circle"></i> Please add your first name.</span>
-    </div>
-
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="inputWrapper">
-      <input class="input" type="text" name="lastname" value="" placeholder="Last Name*" required>
-      <label class="label">Last Name</label>
-      <span class="info info--isVisible"><i class="fa fa-info-circle"></i> Please add your last name.</span>
-    </div>
-
-    <div class="inputWrapper">
-      <input class="input input--error" type="text" name="input" value="" placeholder="First Name*" required>
-      <label class="label">First Name</label>
-      <span class="info info--error"><i class="fa fa-info-circle"></i> This is an error message.</span>
-    </div>
-
-    <div class="inputWrapper">
-      <input class="input input--warning" type="text" name="input" value="" placeholder="Account Number*" required>
-      <label class="label">Account Number</label>
-      <span class="info info--warning"><i class="fa fa-exclamation-triangle"></i> This is a warning message.</span>
-    </div>-->
-
-    <div class="inputWrapper">
-      <input class="input" type="text" name="input" value="" placeholder="E-mail" required>
+      <input class="input" type="text" name="input" formControlName="email" value="" placeholder="E-mail" (input)="hideError('emailError')">
       <label class="label">E-mail</label>
-      <span class="info info--error"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
+      <span class="info info--error" id="emailError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
     </div>
 
     <div class="inputWrapper">
-      <input class="input" type="text" name="input" (focusout)="isFilled()" value="" placeholder="Password*" required>
+      <input class="input" type="password" name="input" formControlName="password" value="" placeholder="Password" (input)="hideError('pwError')">
       <label class="label">Password</label>
-      <span class="info info--error" id="error"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
-      <span class="info">Must contain at least one number and one uppercase and lowercase letter, and at least 10 or more characters.</span>
+      <span class="info info--error" id="pwError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
+    </div>
+
+    <div class="inputWrapper">
+      <input class="input" type="password" name="input" formControlName="confirmPassword" value="" placeholder="Confirm Password" (input)="hideError('confpwError')">
+      <label class="label">Password</label>
+      <span class="info info--error" id="confpwError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
+    </div>
+    <div style="float: right">
+      <button class="btn btn-success" type="submit">Create</button>
+      <button class="btn btn-danger" (click)="goBack()">Back</button>
     </div>
   </form>
 </div>

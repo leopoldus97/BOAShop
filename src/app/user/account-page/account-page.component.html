@@ -1,1 +1,80 @@
-<button (click)="logout()">Log out</button>
+<div class="container" style="padding: 5% 5%">
+  <div class="row my-2">
+    <div class="col-lg-8 order-lg-2">
+      <div style="padding: 2% 0">
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+              <table class="table table-sm table-hover table-striped">
+                <tbody>
+                <div *ngIf="userOrders">
+                <tr *ngFor="let order of userOrders">
+                  <td>
+                    <strong>{{order.id}}</strong> {{order.address}} <strong *ngFor="let product of order.products">{{product.name}}</strong> {{order.total}}
+                  </td>
+                </tr>
+                </div>
+                <div *ngIf="!userOrders">
+                  <strong>No order available!</strong>
+                </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--/row-->
+        </div>
+        <div class="row my-2" id="edit">
+          <form role="form">
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Email</label>
+              <div class="col-lg-7">
+                <input id="emailField" class="form-control" type="email" name="email" value="" style="pointer-events: none" [(ngModel)]="currentUser.email">
+              </div>
+              <i *ngIf="!isEmailEditable" class="col-lg-2 fas fa-pen-square edit" (click)="editEmail()"></i>
+              <i *ngIf="isEmailEditable" class="col-lg-2 fas fa-check-square edit" (click)="editEmail()"></i>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" name="country" value="" [(ngModel)]="currentUser.address.country" placeholder="Country">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Address</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" name="street" value="" [(ngModel)]="currentUser.address.street" placeholder="Street">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-6">
+                <input class="form-control" type="text" name="city" value="" [(ngModel)]="currentUser.address.city" placeholder="City">
+              </div>
+              <div class="col-lg-3">
+                <input class="form-control" type="text" name="zipcode" value="" [(ngModel)]="currentUser.address.zipCode" placeholder="ZipCode">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Password</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="password" value="" [(ngModel)]="password" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="password" value="" [(ngModel)]="confirmPassword" placeholder="Confirm Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+                <input type="button" (click)="onSubmit()" class="btn btn-primary" value="Save Changes">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  <button class="btn btn-danger" (click)="logout()">Log out</button>
+  </div>
