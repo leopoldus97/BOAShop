@@ -1,0 +1,21 @@
+.loader {
+  width: 200px;
+  height: 200px;
+  margin-top: 20%;
+  margin-bottom: 25%;
+  font-size: 60px;
+}
+
+.card-custom {
+  width: 45%;
+  height: auto;
+  margin: 1.6%;
+  padding-inline-start: 0 !important;
+  border: none !important;
+}
+#categoryName{
+  width: fit-content;
+  margin: 3% auto;
+  text-align: center;
+  border-bottom: solid black 1px;
+}

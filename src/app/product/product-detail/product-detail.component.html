@@ -1,109 +1,197 @@
-<div *ngIf="product">
-  <div>
-    <div>
-      <img src="{{product.pictureUrl}}">
+
+<div *ngIf="product" class="mainContainer">
+<div class="container">
+  <!-- <div class="row"> -->
+
+  <div class="row no-gutters">
+    <!-- Pictures row -->
+    <div class="col-12 col-sm-6 col-md-8" style=" padding-right: 10%">
+
+        <ul style="list-style: none;">
+          <li>
+            <mdb-carousel  class="carousel slide carousel-fade customCarousel" [animation]="'fade'">
+              <mdb-carousel-item *ngFor="let picture of product.pictures" >
+                <img class="d-block w-100" src="{{picture.pictureLink}}" alt="{{picture.id}} slide">
+              </mdb-carousel-item>
+            </mdb-carousel>
+          </li>
+        </ul>
     </div>
-    <div>
-      <h1>{{product.name}}</h1>
-      <div>
-        <span>{{product.price}}</span>
-      </div>
-      <form>
-        <div>
-          <label>Size</label>
-        </div>
-        <fieldset>
-          <input type="radio" checked="checked" value="XS">
-          <label>XS</label>
-          <input type="radio" value="S">
-          <label>S</label>
-          <input type="radio" value="M">
-          <label>M</label>
-          <input type="radio"value="L">
-          <label>L</label>
-          <input type="radio" value="XL">
-          <label>XL</label>
-          <input type="radio" value="2XL">
-          <label>2XL</label>
-        </fieldset>
-        <div>
-          <label>Quantity: </label>
-          <input type="number">
-        </div>
-        <div>
-          <button>Add to cart</button>
-        </div>
-        <div>
-          <button>Buy it now</button>
-        </div>
-      </form>
+    <!-- Pictures row -->
+    <!-- Data row -->
+    <div class="col-6 col-md-4">
       <div>
         <div>
-          <img src="https://trust.conversionbear.com/../static/badges/securecheckout_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/100percentqualityguarantee_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/returnsaccepted_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/visa_1_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/mastercard_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/americanexpress_1_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/interac_1_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/applepay_color_card.svg">
-        </div>
-        <div>
-          <img src="https://trust.conversionbear.com/../static/badges/paypal_1_color_card.svg">
+
+          <div>
+            <h1 *ngIf="product.collection" class="textCenter">"<a (click)="setFilter('Collection=' + product.collection.name,'/'+product.collection.name.trim(),product.collection.name+' Collection')">{{product.collection.name}}</a>"</h1>
+            <h1 class="textCenter">{{product.name}}</h1><br>
+            <div>
+              <h3 class="textCenter"><b>${{product.price}}</b></h3>
+            </div>
+            <form>
+              <div class="textCenter" style="padding-top: 20px">
+                <h6>Size</h6>
+              </div>
+
+              <!-- Size selection -->
+              <ul class="sizes">
+                <li>
+                  <input type="radio" id="XS" name="size"  (click)="setSize('XS')" />
+                  <label for="XS">XS</label>
+                </li>
+                <li>
+                  <input type="radio" id="S" name="size" (click)="setSize('S')"/>
+                  <label for="S">S</label>
+                </li>
+                <li>
+                  <input type="radio" id="M" name="size" (click)="setSize('M')" checked/>
+                  <label for="M">M</label>
+                </li>
+                <li>
+                  <input type="radio" id="L" name="size" (click)="setSize('L')"/>
+                  <label for="L">L</label>
+                </li>
+                <li>
+                  <input type="radio" id="XL" name="size" (click)="setSize('XL')"/>
+                  <label for="XL">XL</label>
+                </li>
+                <li>
+                  <input type="radio" id="2XL" name="size" (click)="setSize('2XL')"/>
+                  <label for="2XL">2XL</label>
+                </li>
+                <li>
+                  <input type="radio" id="3XL" name="size" (click)="setSize('3XL')"/>
+                  <label for="3XL">3XL</label>
+                </li>
+              </ul>
+              <!-- Size selection -->
+              <br>
+              <div id="quantityPart">
+                <label>Quantity &nbsp;</label>
+                <input [(ngModel)]="productQuantity.quantity" name="first" id="quantityInputField" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                       type = "number"
+                       maxlength = "2"
+                       min="1"
+                       max="99"
+                       value="1">
+              </div>
+              <div>
+                <button id="addToCart" type="button" class="btn btn-success" (click)="addToCart() ">ADD TO CART</button>
+              </div>
+              <div>
+                <button id="buyIt" type="button" class="btn btn-success">BUY IT NOW</button>
+              </div>
+              <div>
+              </div>
+            </form>
+            <!--STAMPS Container-->
+            <div class="container">
+              <!-- First row -->
+              <div class="row no-gutters">
+                <div class="col">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/securecheckout_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/100percentqualityguarantee_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/returnsaccepted_color_card.svg">
+                </div>
+              </div>
+              <!-- First row -->
+              <br>
+              <!-- Second row -->
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/visa_1_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/mastercard_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/americanexpress_1_color_card.svg">
+                </div>
+              </div>
+              <!-- Second row -->
+              <br>
+              <!-- Third row -->
+              <div class="row no-gutters">
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/interac_1_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/applepay_color_card.svg">
+                </div>
+                <div class="col-sm">
+                  <img class="stampSizing" src="https://trust.conversionbear.com/../static/badges/paypal_1_color_card.svg">
+                </div>
+              </div>
+              <!-- Third row -->
+
+            </div>
+            <!--STAMPS Container-->
+
+            <div style="margin-top: 40px; margin-bottom: 15px">
+              <h4>Description: </h4>
+              {{product.description}}
+            </div>
+            <br>
+            <!-- Size table -->
+            <div>
+              <table cellpadding="5">
+                <tbody>
+                <tr>
+                  <td><strong>Size options</strong></td>
+                  <td><strong>XS</strong></td>
+                  <td><strong>S</strong></td>
+                  <td><strong>M</strong></td>
+                  <td><strong>L</strong></td>
+                  <td><strong>XL</strong></td>
+                  <td><strong>2XL</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Width (inches)</strong></td>
+                  <td>15 ½</td>
+                  <td>17 ½</td>
+                  <td>19 ½</td>
+                  <td>21 ½</td>
+                  <td>23 ½</td>
+                  <td>25 ½</td>
+                </tr>
+                <tr>
+                  <td><strong>Length (inches)</strong></td>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>30</td>
+                  <td>31</td>
+                  <td>32</td>
+                  <td>33</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Size table -->
+          </div>
+
         </div>
       </div>
-      <div>
-        {{product.description}}
-        <p>Size options</p>
-      </div>
-      <div>
-        <table cellpadding="5">
-          <tbody>
-          <tr>
-            <td>&nbsp;</td>
-            <td><strong>XS</strong></td>
-            <td><strong>S</strong></td>
-            <td><strong>M</strong></td>
-            <td><strong>L</strong></td>
-            <td><strong>XL</strong></td>
-            <td><strong>2XL</strong></td>
-          </tr>
-          <tr>
-            <td><strong>Width (inches)</strong></td>
-            <td>15 ½</td>
-            <td>17 ½</td>
-            <td>19 ½</td>
-            <td>21 ½</td>
-            <td>23 ½</td>
-            <td>25 ½</td>
-          </tr>
-          <tr>
-            <td><strong>Length (inches)</strong></td>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
-            <td>31</td>
-            <td>32</td>
-            <td>33</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
+    <!-- Data row -->
+  </div>
+  <!-- </div> -->
+</div>
+
+
+</div>
+<div *ngIf="!product">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
   </div>
 </div>
-<div *ngIf="!product">Loading...</div>
+
+
+
+

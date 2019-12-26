@@ -1,4 +1,6 @@
 import {Collection} from './collection';
+import {SizeQuantity} from './sizeQuantity';
+import {Picture} from './picture';
 
 export interface Product {
   id: number;
@@ -6,8 +8,8 @@ export interface Product {
   type: string;
   gender: string;
   price: number;
-  size: string;
-  pictureUrl: string;
+  sizeQuantity: SizeQuantity[];
+  pictures: Picture[];
   availableQuantity: number;
   discountPrice: number;
   collection: Collection;

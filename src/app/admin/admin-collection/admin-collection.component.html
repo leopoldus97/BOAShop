@@ -1,0 +1,35 @@
+<ul class="list-unstyled">
+  <li>Name: <input type="text" [(ngModel)]="collection.name"></li>
+</ul>
+<button (click)="showProducts()" id="addButton">Add Products</button>
+<ul class="list-unstyled">
+  <li *ngIf="displayProducts">Select product:
+    <select id="select" (change)="setID()">
+      <option  *ngFor="let ap of allProducts" value="{{ap.id}}">{{ap.name}}</option>
+    </select>
+    <br>
+    <button (click)="transfer()">Add</button>
+    <h5>Current products:</h5>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col" class="col-header">ID</th>
+        <th scope="col" class="col-header">Name</th>
+        <th scope="col" class="col-header">Type</th>
+        <th scope="col" class="col-header">Price</th>
+        <th scope="col" class="col-header" style="text-align: right">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cp of collection.products" class="table-row">
+        <th scope="row">{{cp.id}}</th>
+        <td>{{getName(cp.id)}}</td>
+        <td>{{getType(cp.id)}}</td>
+        <td>{{getPrice(cp.id)}}</td>
+        <td style="text-align: right"><i class="fas fa-trash-alt" (click)="remove(cp.id)"></i></td>
+      </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+<button (click)="save()">Save</button>

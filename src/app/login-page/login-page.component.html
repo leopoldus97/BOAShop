@@ -1,52 +1,46 @@
 <div class="inputFieldContainer">
+  <!--Grid column-->
+  <div class="col-md-6">
 
+    <!-- Default form login -->
+    <form class="text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
+      <p class="h4 mb-4">Login</p>
 
-      <!--Grid column-->
-      <div class="col-md-6">
+      <!-- Email -->
+      <input type="email" id="defaultLoginFormEmail" formControlName="email" class="form-control mb-4" placeholder="E-mail" required>
 
-        <!-- Default form login -->
-        <form class="text-center" action="#!">
+      <!-- Password -->
+      <input type="password" id="defaultLoginFormPassword" formControlName="password" class="form-control mb-4" placeholder="Password" required>
 
-          <p class="h4 mb-4">Login</p>
-
-          <!-- Email -->
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-          <!-- Password -->
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-
-          <div class="d-flex justify-content-around">
-            <div>
-              <!-- Remember me -->
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-              </div>
-            </div>
-            <div>
-              <!-- Forgot password -->
-              <a href="">Forgot password?</a>
-            </div>
+      <div class="d-flex justify-content-around">
+        <div>
+          <!-- Remember me -->
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
           </div>
-
-          <!-- Sign in button -->
-          <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-
-          <!-- Register -->
-          <p>Not a member?
-            <a href="">Register</a>
-          </p>
-
-        </form>
-        <!-- Default form login -->
-
+        </div>
+        <div>
+          <!-- Forgot password -->
+          <a href="">Forgot password?</a>
+        </div>
       </div>
-      <!--Grid column-->
 
+      <!-- Sign in button -->
+      <button [disabled]="loading" class="btn btn-info btn-block my-4" type="submit">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Sign in
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      <!-- Register -->
+      <p>Not a member?
+        <a routerLink="/create-account">Register</a>
+      </p>
 
+    </form>
+    <!-- Default form login -->
 
-
-
-
+  </div>
+  <!--Grid column-->
 </div>

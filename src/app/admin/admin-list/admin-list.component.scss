@@ -1,0 +1,12 @@
+th:focus, td:focus {
+  outline: none;
+}
+
+.col-header:hover {
+  cursor: pointer;
+  background-color: #ECECEC;
+}
+
+.table-row:hover {
+  cursor: pointer;
+}

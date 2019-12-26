@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Product} from '../../shared/models/product';
-import {Router} from '@angular/router';
-import {ProductService} from '../../shared/services/product.service';
-
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProductService} from '../../shared/services/product-service/product.service';
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -11,13 +11,35 @@ import {ProductService} from '../../shared/services/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[];
   name: string;
-  constructor(private route: Router, private service: ProductService) { }
-
+  errorMessage = '';
+  currentPage = 1;
+  noProductsAvailable = false;
+  constructor(private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute) {
+    activeRoute.params.subscribe(val => {
+      this.getProducts2();
+    });
+  }
   ngOnInit() {
-    this.getProducts();
+    this.getProducts2();
   }
-  getProducts() {
-    this.service.getProducts().subscribe(listOfProducts => this.products = listOfProducts);
+  getProducts2() {
+    this.errorMessage = '';
+    this.productService.getProducts()
+        .subscribe(
+          listOfProducts => {
+            this.noProductsAvailable = false;
+            this.products = listOfProducts;
+          },
+          (error) => {
+            this.noProductsAvailable = true;
+            this.products = null;
+          },
+        );
+    }
+    changePage(page: number) {
+    this.currentPage += page;
+    this.productService.setPaging(this.currentPage);
+    this.getProducts2();
+    }
   }
 
-}

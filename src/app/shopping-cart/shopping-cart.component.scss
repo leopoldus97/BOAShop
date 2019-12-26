@@ -1,5 +1,11 @@
-.container{
-  border-width: medium;
-  border-color: green;
-  background-color: aqua;
+#noProductsContainer{
+  height: 300px;
+  width: fit-content;
+  margin: auto;
+  padding-top: 40px;
+}
+#backButton{
+  position: center;
+  width: fit-content;
+  font-size:30px;
 }

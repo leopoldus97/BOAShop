@@ -1,20 +1,61 @@
+<div *ngIf="products" class="container" style="padding-left: 25px; padding-right: 20px">
+  <div *ngIf="products" id="categoryName"><h1>{{productService.properType}}</h1></div>
+  <div class="row">
+    <ul class="card card-cascade card-custom" *ngFor="let product of products">
+      <li style="list-style: none;  text-align: center">
+        <a routerLink="/productdetail/{{product.id}}">
 
-<div *ngIf="products">
-  <h1>{{name}}</h1>
-  <div>
-    <ul>
-      <li *ngFor="let product of products">
-        <a routerLink="/products/{{product.id}}">
-          <div>
-            <img src="{{product.pictureUrl}}">
+          <div class="view view-cascade overlay" style="border-radius: 5%">
+            <img class="card-img-top" src="{{product.pictures[0].pictureLink}}" style="height: 70%">
+            <a>
+              <div class="mask rgba-yellow-light"></div>
+            </a>
           </div>
-          <div>"{{product.collection.name}}" {{product.name}} - {{product.price | currency}}</div>
+
+          <div class="card-body card-body-cascade text-center" style="color: black">
+
+            <h4 class="card-title"><strong *ngIf="product.collection">{{product.collection.name}}</strong></h4>
+
+            <h6 class="font-weight-bold py-2">{{product.name}} - {{product.price | currency}}</h6>
+
+          </div>
         </a>
       </li>
     </ul>
   </div>
+  <!-- Paging -->
+  <div style="width: fit-content; margin: auto">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li class="page-item ">
+        <a class="page-link" (click)="changePage(-1)" *ngIf="currentPage !== 1" style="color: black; font-weight:bold">Previous</a>
+        <a class="page-link disabled" *ngIf="currentPage === 1" style="color: gray">Previous</a>
+      </li>
+      <li class="page-item disabled">
+      <span class="page-link">
+        {{currentPage}}
+        <span class="sr-only">(current)</span>
+      </span>
+      </li>
+      <li class="page-item">
+        <a class="page-link disabled" *ngIf="products.length < productService.itemsPrPage" style="color: gray">Next</a>
+        <a class="page-link" (click)="changePage(1)" *ngIf="products.length === productService.itemsPrPage" style="color: black; font-weight:bold">Next</a>
+      </li>
+    </ul>
+</nav>
+  </div>
+  <!-- Paging -->
 </div>
-<div *ngIf="!products">
-  <h1>Loading...</h1>
+<div *ngIf="!products && !noProductsAvailable">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+<div *ngIf="!products && noProductsAvailable" id="noProductsContainer">
+  <p style=" font-size:30px">Currently no products in this category.</p>
+  <br>
+  <button type="button" class="btn btn-light" id="backButton" (click)="this.productService.setFilter('','Available Products')" routerLink="/products">Back to the store</button>
 </div>
 

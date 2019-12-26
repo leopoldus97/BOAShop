@@ -1,0 +1,65 @@
+<div *ngIf="product">
+  <div class="container">
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Name: </div>
+      <div class="col"><input [(ngModel)]="product.name"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Type: </div>
+      <div class="col"><input [(ngModel)]="product.type"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Gender: </div>
+      <div class="col">
+        <select [(ngModel)]="product.gender" style="height: 30px">
+          <option value="" disabled hidden>Select gender</option>
+          <option value="Men">Male</option>
+          <option value="Women">Female</option>
+          <option value="Unisex">Unisex</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Price: </div>
+      <div class="col"><input [(ngModel)]="product.price" type="number" style="width:200px"></div>
+    </div>
+    <div class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2">Discounted price: </div>
+      <div class="col"><input [(ngModel)]="product.discountPrice"type="number" style="width:200px">(Leave at 0 for no discount)</div>
+    </div>
+    <div *ngIf="togCol==1" class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2"><button (click)="removeCollection()"> Remove Collection</button></div>
+      <div class="col">
+        <select [(ngModel)]="product.collection.id" style="height: 30px">
+          <option value="0" disabled hidden>Choose collection</option>
+          <option *ngFor="let c of collections" value="{{c.id}}">{{c.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="togCol==0" class="row" style="padding-bottom:5px; padding-top: 5px">
+      <div class="col-2"><button (click)="addCollection()"> Add Collection</button></div>
+      <div class="col">No collection</div>
+    </div>
+    <div>Description:</div>
+    <div><textarea [(ngModel)]="product.description"></textarea></div>
+  <div>
+    <button (click)="deleteProduct()" style="color:red">Delete Product</button>
+    <button (click)="getProductByID()">Reset</button>
+    <button (click)="updateProduct()">Save</button>
+  </div>
+  <p>{{product | json}}</p>
+</div>
+
+
+
+
+<div *ngIf="!product">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+

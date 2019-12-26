@@ -2,9 +2,10 @@ import {Address} from './address';
 import {Order} from './order';
 
 export interface User {
-  id: number;
+  id?: number;
   email: string;
-  isAdmin: boolean;
-  address: Address;
-  orders: Order[];
+  isAdmin?: boolean;
+  address?: Address;
+  orders?: Order[];
+  token?: string;
 }
