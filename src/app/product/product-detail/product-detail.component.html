@@ -35,34 +35,44 @@
               </div>
 
               <!-- Size selection -->
-              <ul class="sizes">
-                <li>
+              {{productQuantity.size}}
+              {{this.suspect.size}}
+              <br>
+              {{this.product.sizeQuantity[6].size}}
+              {{this.product.sizeQuantity[5].size}}
+              {{this.product.sizeQuantity[4].size}}
+              {{this.product.sizeQuantity[3].size}}
+              {{this.product.sizeQuantity[2].size}}
+              {{this.product.sizeQuantity[1].size}}
+              {{this.product.sizeQuantity[0].size}}
+              <ul class="sizes" style="position: center">
+                <li *ngIf="quantityValid('XS')">
                   <input type="radio" id="XS" name="size"  (click)="setSize('XS')" />
                   <label for="XS">XS</label>
                 </li>
-                <li>
+                <li *ngIf="quantityValid('S')">
                   <input type="radio" id="S" name="size" (click)="setSize('S')"/>
                   <label for="S">S</label>
                 </li>
-                <li>
+                <li *ngIf="quantityValid('M')">
                   <input type="radio" id="M" name="size" (click)="setSize('M')" checked/>
                   <label for="M">M</label>
                 </li>
-                <li>
+                <li *ngIf="quantityValid('L')">
                   <input type="radio" id="L" name="size" (click)="setSize('L')"/>
                   <label for="L">L</label>
                 </li>
-                <li>
+                <li *ngIf="quantityValid('XL')">
                   <input type="radio" id="XL" name="size" (click)="setSize('XL')"/>
                   <label for="XL">XL</label>
                 </li>
-                <li>
-                  <input type="radio" id="2XL" name="size" (click)="setSize('2XL')"/>
-                  <label for="2XL">2XL</label>
+                <li *ngIf="quantityValid('XXL')">
+                  <input type="radio" id="XXL" name="size" (click)="setSize('XXL')"/>
+                  <label for="XXL">XXL</label>
                 </li>
-                <li>
-                  <input type="radio" id="3XL" name="size" (click)="setSize('3XL')"/>
-                  <label for="3XL">3XL</label>
+                <li *ngIf="quantityValid('XXXL')">
+                  <input type="radio" id="XXXL" name="size" (click)="setSize('XXXL')"/>
+                  <label for="XXXL">XXXL</label>
                 </li>
               </ul>
               <!-- Size selection -->

@@ -9,6 +9,8 @@ export class CartService {
   currentCart: Array<ProductQuantity> = [];
   currentCartPrice = 0;
   id = 1;
+  quantityExceeded = false;
+  sizeExceeded = '';
   constructor() { }
   getProducts(): ProductQuantity[] {
     if (this.currentCart.length > 0) {

@@ -1,7 +1,8 @@
 <div class="modal-content fixed-bottom" style="height: 4rem; text-align: center; font-size: larger">
   <div class="modal-body">
-    Your product has been added to the basket.
+    <span *ngIf="!cartService.quantityExceeded"> Your product has been added to the basket. </span>
+    <span *ngIf="cartService.quantityExceeded"> You exceeded available amount of "{{cartService.sizeExceeded}}" size. Max available added to cart. </span>
     <button class="btn btn-success" aria-label="Close" (click)="goToBasket()">Go to Basket</button>
-    <button class="btn btn-warning" aria-label="Close" (click)="modalRef.hide()">Continue Shopping</button>
+    <button class="btn btn-warning" aria-label="Close" (click)="hide()">Continue Shopping</button>
   </div>
 </div>
