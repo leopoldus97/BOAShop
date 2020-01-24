@@ -1,4 +1,4 @@
-<div *ngIf="currentProducts.length > 0" class="px-4 px-lg-0">
+<div *ngIf="cartProducts.length > 0" class="px-4 px-lg-0">
 
   <div class="pb-5">
     <div class="container">
@@ -24,22 +24,24 @@
                 </th>
               </tr>
               </thead>
-              <tbody [(ngModel)]="currentProducts" *ngFor="let currentProduct of currentProducts " >
+              <tbody [(ngModel)]="cartProducts" *ngFor="let currentProduct of cartProducts " >
               <!-- Test row -->
               <tr>
                 <th scope="row">
                   <div class="p-2">
                     <img  src="{{currentProduct.product.pictures[0].pictureLink}}" alt="" width="70" class="img-fluid rounded shadow-sm">
                     <div class="ml-3 d-inline-block align-middle">
-                      <h5 class="mb-0"> <a href="/productdetail/{{currentProduct.product.id}}" class="text-dark d-inline-block">{{currentProduct.product.name}}</a></h5><span class="text-muted font-weight-normal font-italic">Size: {{currentProduct.size}}</span>
+                      <h5 class="mb-0"> <a routerLink="/productdetail/{{currentProduct.product.id}}" class="text-dark d-inline-block">{{currentProduct.product.name}}</a></h5><span class="text-muted font-weight-normal font-italic">Size: {{currentProduct.size}}</span>
                     </div>
                   </div>
                 <td class="align-middle"><strong>${{currentProduct.sum}}</strong></td>
-                <td class="align-middle"><strong><input (ngModelChange)="sumForProduct(currentProduct)" [(ngModel)]="currentProduct.quantity" name="quantity" style="width: fit-content"  onKeyDown="return false;" type="number" maxlength="2" min="1" max="99" value="{{currentProduct.quantity}}" required></strong></td>
-                <td class="align-middle"><a  class="text-dark"  (click)="removeProduct(currentProduct)"><i class="fa fa-trash"></i></a>
-                </td>
-              </tr>
-              <!-- Test row -->
+               <td class="align-middle"><strong style="position: relative; left: 20%" >{{currentProduct.quantity}}</strong></td>
+
+                <!--  <td class="align-middle"><strong><input (ngModelChange)="sumForProduct(currentProduct)" [(ngModel)]="currentProduct.quantity" name="quantity" style="width: fit-content"  onKeyDown="return false;" type="number" maxlength="2" min="1" max="99" value="{{currentProduct.quantity}}" required></strong></td> -->
+                 <td class="align-middle"><a  class="text-dark"  (click)="removeProduct(currentProduct)"><i class="fa fa-trash"></i></a>
+                 </td>
+               </tr>
+               <!-- Test row -->
               </tbody>
             </table>
           </div>
@@ -84,7 +86,8 @@
     </div>
   </div>
 </div>
-<div *ngIf="currentProducts.length === 0" id="noProductsContainer">
+
+<div *ngIf="cartProducts.length === 0" id="noProductsContainer">
   <p style=" font-size:30px">Your cart is empty.</p>
   <br>
   <button type="button" class="btn btn-light" id="backButton" (click)="this.productService.setFilter('','Available Products')" routerLink="/products">Back to the store</button>

@@ -21,7 +21,7 @@ export class ModalComponent {
     this.cleanVariables();
   }
   cleanVariables() {
-    this.cartService.sizeExceeded = null;
+    this.cartService.sizeExceeded = '';
     this.cartService.quantityExceeded = false;
   }
 }

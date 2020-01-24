@@ -38,6 +38,9 @@ export class CartService {
     }
     this.calculateTotal();
   }
+  updateProduct(updated: ProductQuantity) {
+    this.currentCart.find(p => p.product.name === updated.product.name && p.size === updated.size).quantity = updated.quantity;
+  }
   updateProducts(updated: ProductQuantity[]) {
     this.currentCart = updated;
   }

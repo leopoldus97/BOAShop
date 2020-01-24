@@ -7,6 +7,7 @@ import {CartService} from '../../shared/services/cart-service/cart.service';
 import {MDBModalRef, MDBModalService} from 'angular-bootstrap-md';
 import {ModalComponent} from '../../shared/modal/modal.component';
 import {SizeQuantity} from '../../shared/models/sizeQuantity';
+import {debug} from "util";
 
 @Component({
   selector: 'app-product-detail',
@@ -36,7 +37,7 @@ export class ProductDetailComponent implements OnInit {
       this.productQuantity.id = this.cartService.availableID();
       this.productQuantity.product = this.product;
       // This updates available quantity of a product in DB
-      this.updateQuantityInDB();
+      // this.updateQuantityInDB();
       // This updates available quantity of a product in DB
       this.productQuantity.sum = this.formatSum(this.productQuantity.quantity * this.product.price);
       this.cartService.addProduct(this.productQuantity);
@@ -47,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
     }
     this.openModal();
   }
-
+/*
   private updateQuantityInDB() {
     const productDB = this.product.sizeQuantity.find( sq => sq.size === this.productQuantity.size);
     //
@@ -59,8 +60,11 @@ export class ProductDetailComponent implements OnInit {
     }
     this.suspect = this.product.sizeQuantity.find( sq => sq.size === this.productQuantity.size);
     this.product.sizeQuantity.find( sq => sq.size === this.productQuantity.size).quantity -= this.productQuantity.quantity;
-    this.service.updateProduct(this.product);
-  }
+    this.service.updateProduct(this.product).subscribe( () => {
+      this.getProductByID();
+      this.router.navigateByUrl('products');
+    });
+  } */
   setSize(size: string) {
     this.productQuantity.size = size;
   }

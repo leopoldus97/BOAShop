@@ -35,16 +35,7 @@
               </div>
 
               <!-- Size selection -->
-              {{productQuantity.size}}
-              {{this.suspect.size}}
-              <br>
-              {{this.product.sizeQuantity[6].size}}
-              {{this.product.sizeQuantity[5].size}}
-              {{this.product.sizeQuantity[4].size}}
-              {{this.product.sizeQuantity[3].size}}
-              {{this.product.sizeQuantity[2].size}}
-              {{this.product.sizeQuantity[1].size}}
-              {{this.product.sizeQuantity[0].size}}
+
               <ul class="sizes" style="position: center">
                 <li *ngIf="quantityValid('XS')">
                   <input type="radio" id="XS" name="size"  (click)="setSize('XS')" />
