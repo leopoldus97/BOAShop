@@ -1,25 +1,57 @@
-<div class="container">
-  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <div class="inputWrapper">
-      <input class="input" type="text" name="input" formControlName="email" value="" placeholder="E-mail" (input)="hideError('emailError')">
-      <label class="label">E-mail</label>
-      <span class="info info--error" id="emailError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
-    </div>
+<div class="inputFieldContainer">
+  <!--Grid column-->
+  <div style="border: solid lightgray 1px;" class="col-md-6">
 
-    <div class="inputWrapper">
-      <input class="input" type="password" name="input" formControlName="password" value="" placeholder="Password" (input)="hideError('pwError')">
-      <label class="label">Password</label>
-      <span class="info info--error" id="pwError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
-    </div>
+    <!-- Default form login -->
+    <form class="text-center"  #f="ngForm" novalidate (ngSubmit)="save(f.value, f.valid)">
 
-    <div class="inputWrapper">
-      <input class="input" type="password" name="input" formControlName="confirmPassword" value="" placeholder="Confirm Password" (input)="hideError('confpwError')">
-      <label class="label">Password</label>
-      <span class="info info--error" id="confpwError"><i class="fa fa-info-circle"></i>You need to fill out this field!</span>
-    </div>
-    <div style="float: right">
-      <button class="btn btn-success" type="submit">Create</button>
-      <button class="btn btn-danger" (click)="goBack()">Back</button>
-    </div>
-  </form>
+      <p class="h4 mb-4">Create account</p>
+
+      <!-- Email -->
+      <label>Email</label>
+      <input class="form-control mb-4" type="email" name="email" [ngModel]="validator.email"
+             required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" #email="ngModel" >
+      <small class="text-danger" [hidden]="email.valid || (email.pristine && !f.submitted)">
+        Email is required and format should be <i>john@doe.com</i>.
+      </small>
+
+
+      <div>
+        <label>Password</label>
+        <input class="form-control mb-4" type="password" name="password" [ngModel]="validator.password"
+               required #password="ngModel" minlength="6">
+        <small class="text-danger" [hidden]="password.valid || (password.pristine && !f.submitted)">
+          Password is required, at least 6 characters.
+        </small>
+      </div>
+      <div>
+        <label>Confirm password</label>
+        <input class="form-control mb-4" type="password" name="confirmPassword" [ngModel]="validator.confirmPassword"
+               required validateEqual="password" #confirmPassword="ngModel" minlength="6">
+        <small class="text-danger" [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !f.submitted)">
+          Password mismatch
+        </small>
+      </div>
+
+
+
+
+      <div class="d-flex justify-content-around">
+
+      </div>
+
+      <!-- Sign in button -->
+      <button type="submit" class="btn btn-info btn-block my-4" [disabled]="!f.valid" *ngIf="f.valid">Register</button>
+
+
+      <!-- Register -->
+      <p>Have account already?
+        <a routerLink="/login">Log in</a>
+      </p>
+
+    </form>
+    <!-- Default form login -->
+
+  </div>
+  <!--Grid column-->
 </div>

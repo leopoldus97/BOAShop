@@ -20,7 +20,7 @@ import {AdminCollectionEditComponent} from './admin/admin-collection-edit/admin-
 
 
 const routes: Routes = [
-  { path: '', component: WelcomePageComponent },
+  { path: '', component: ProductListComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'collections', component: CollectionListComponent },
